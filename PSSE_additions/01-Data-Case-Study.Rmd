@@ -1,0 +1,312 @@
+# (PART) Introduction to Data {.unnumbered}
+
+# Data Case Study {#CS1}
+
+## Introduction to Data: Unleashing the Power of Information in R
+
+Welcome to the world of data! In today's information-driven age, data is the lifeblood of decision-making, problem-solving, and understanding the world around us. Whether you're an aspiring data scientist, a business analyst, a researcher, or simply curious about the role of data in our lives, this module will introduce you to the fundamental concepts and tools needed to harness the immense potential of data.
+
+But first, let's address a fundamental question: Why do we need data to answer questions?
+
+Data is not just numbers, text, or images; it's a powerful tool that helps us unravel mysteries, make informed choices, and gain insights into the complex phenomena that shape our world. Here are a few reasons why data is indispensable for answering questions:
+
+1. **Evidence-Based Decision Making**: Data provides concrete evidence that allows us to make decisions based on facts rather than intuition or guesswork. Whether it's optimizing business operations, developing public policies, or even making personal choices, data-driven decisions are more likely to lead to success.
+
+2. **Pattern Recognition**: Data allows us to identify patterns, trends, and relationships within vast and complex datasets. By analyzing data, we can detect hidden correlations and gain a deeper understanding of how various factors interact.
+
+3. **Validation and Testing**: Data allows us to test hypotheses and validate our assumptions. It helps us confirm or refute ideas, theories, or claims, ensuring that our conclusions are grounded in empirical evidence.
+
+4. **Predictive Modeling**: With data, we can build models that forecast future outcomes based on historical data. This predictive power is invaluable in fields like finance, healthcare, and climate science, where anticipating future trends is crucial.
+
+5. **Continuous Improvement**: Data facilitates ongoing improvement and optimization. By tracking performance metrics and collecting feedback, organizations and individuals can continually refine their processes and make incremental progress.
+
+6. **Informed Communication**: Data provides a common language for communication and collaboration. When discussing complex topics or presenting information to others, data helps convey ideas more clearly and objectively.
+
+Throughout this module, you'll learn how to work with data using the `R` programming language, a versatile tool widely used for data analysis and visualization. You'll explore data collection, exploration, wrangling, and visualization techniques, equipping you with the skills to extract valuable insights and answer questions using data.
+
+## Case Study
+
+Before we dive into principles of data, data collection, visualization and exploration, we will walk through an introductory "case study". The idea is to provide a preview of what we'll cover in this section. You are not expected to understand much of the execution at this time, but you should be able to follow along with the example. All concepts and tools will be covered more deeply in the subsequent chapters. 
+
+We will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke. [^01-data-case-study-1] [^01-data-case-study-2] Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
+
+[^01-data-case-study-1]: Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003.
+
+[^01-data-case-study-2]: NY Times article reporting on the study: <http://www.nytimes.com/2011/09/08/health/research/08stent.html>
+
+### Research question
+
+> Does the use of stents reduce the risk of stroke?
+
+### Collect the relevant data
+
+The researchers who asked this question collected data on 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:
+
+**Treatment group**. Patients in the treatment group received a stent and medical management. The medical management included medications, management of risk factors, and help in lifestyle modification.
+
+**Control group**. Patients in the control group received the same medical management as the treatment group but did not receive stents.
+
+Researchers randomly assigned 224 patients to the treatment group and 227 to the control group. In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.
+
+This is an experiment and not an observational study. We will learn more about these ideas in this block.
+
+Researchers studied the effect of stents at two time points: 30 days after enrollment and 365 days after enrollment.
+
+### Import data
+
+We begin our first use of `R`.
+
+If you need to install a package, most likely it will be on CRAN, the Comprehensive R Archive Network. Before a package can be used, it must be installed on the computer (once per computer or account) and loaded into a session (once per `R` session). When you exit `R`, the package stays installed on the computer but will not be reloaded when `R` is started again.
+
+In summary, `R` has packages that can be downloaded and installed from online repositories such as CRAN. When you install a package, which only needs to be done once per computer or account, in `R` all it is doing is placing the source code in a library folder designated during the installation of `R`. Packages are typically collections of functions and variables that are specific to a certain task or subject matter.
+
+For example, to install the **mosaic** package, enter:
+
+```         
+install.packages("mosaic") # fetch package from CRAN
+```
+
+In RStudio, there is a *Packages* tab that makes it easy to add and maintain packages.
+
+To use a package in a session, we must load it. This makes it available to the current session only. When you start `R` again, you will have to load packages again. The command `library()` with the package name supplied as the argument is all that is needed. For this session, we will load **tidyverse** and **mosaic**. Note: the box below is executing the `R` commands, this is known as reproducible research since you can see the code and then you can run or modify as you need.
+
+```{r message=FALSE}
+library(tidyverse)
+```
+
+```{r results='hide', echo=FALSE}
+stent_study <- tibble(group = c(rep('trmt', 224), rep('control', 227)), 
+                      outcome30 = c(rep(c('stroke', 'no_event'), c(33, 191)), 
+                                    rep(c('stroke', 'no_event'), c(13, 214))), 
+                      outcome365 = c(rep(c('stroke', 'no_event'), c(45, 179)), 
+                                     rep(c('stroke', 'no_event'), c(28, 199))))
+
+stent_study <- stent_study %>%
+sample() %>%
+select(-orig.id)
+```
+
+Next read in the data into the working environment.
+
+```{r message=FALSE}
+stent_study <- read_csv("data/stent_study.csv")
+```
+
+Let's break this code down. We are reading from a .csv file and assigning the results into an object called `stent_study`. The assignment arrow `<-` means we assign what is on the right to what is on the left. The `R` function we use in this case is `read_csv()`. When using `R` functions, you should ask yourself:
+
+1.  What do I want `R` to do?
+
+2.  What information must I provide for `R` to do this?
+
+We want `R` to read in a .csv file. We can get help on this function by typing `?read_csv` or `help(read_csv)` at the prompt. The only required input to `read_csv()` is the file location. We have our data stored in a folder called "data" under the working directory. We can determine the working directory by typing `getwd()` at the prompt.
+
+```{r eval=FALSE}
+getwd()
+```
+
+Similarly, if we wish to change the working directory, we can do so by using the `setwd()` function:
+
+```{r, eval=FALSE}
+setwd('C:/Users/Brianna.Hitt/Documents/ProbStat/Another Folder')
+```
+
+In `R` if you use the `view()`, you will see the data in what looks like a standard spreadsheet.
+
+```{r eval=FALSE}
+View(stent_study)
+```
+
+### Explore data
+
+Before we attempt to answer the research question, let's look at the data. We want `R` to print out the first 10 rows of the data. The appropriate function is `head()` and it needs the data object. By default, `R` will output the first 6 rows. By using the `n =` argument, we can specify how many rows we want to view.
+
+```{r}
+head(stent_study, n = 10)
+```
+
+We also want to "glimpse" the data. The function is `glimpse()` and `R` needs the data object `stent_study`.
+
+```{r warning=FALSE}
+glimpse(stent_study)
+```
+
+To keep things simple, we will only look at the `outcome30` variable in this case study. We will summarize the data in a table. We will learn to do this using the **tidyverse** package. 
+
+We want to summarize the data by making a table. Using `tidyverse`, we would like to count the number of observations broken down by `group` and `outcome30`. The basic format is:
+
+
+```{r}
+stent_study %>%
+  group_by(group,outcome30)%>%
+  summarize(total=n())
+```
+
+Of the 224 patients in the treatment group, 33 had a stroke by the end of the first month. Using these two numbers, we can use `R` to compute the proportion of patients in the treatment group who had a stroke by the end of their first month.
+
+```{r}
+33 / (33 + 191)
+```
+
+
+Let's have `R` calculate proportions for us. Starting with the table above, we want to divide each count by the total, broken down by group. So, we need to group by the `group` variable and divide: 
+
+```{r}
+stent_study %>%
+  group_by(group,outcome30)%>%
+  summarize(total=n())%>%
+  group_by(group)%>%
+  mutate(prop = total/sum(total))
+```
+
+These tables present summary statistics. A **summary statistic** is a single number summarizing a large amount of data.[^01-data-case-study-3] For instance, the primary results of the study after 1 month could be described by two summary statistics: the proportion of people who had a stroke in the treatment group and the proportion of people who had a stroke in the control group.
+
+[^01-data-case-study-3]: Formally, a summary statistic is a value computed from the data. Some summary statistics are more useful than others.
+
+-   Proportion who had a stroke in the treatment (stent) group: $33/224 = 0.15 = 15\%$
+
+-   Proportion who had a stroke in the control group: $13/227 = 0.06 = 6\%$
+
+### Visualize the data
+
+It is often important to visualize the data. The table is a type of visualization, but in this section we will introduce a graphical method called bar charts.
+
+We will use the **ggplot2** package to visualize the data. This package is becoming the industry standard for generating professional graphics. The interface for **ggplot2** can seem difficult at first, but we will ease into it. The **ggplot2** package was loaded when we loaded `tidyverse`.
+
+To generate a basic graphic, we need to ask ourselves what information we are trying to see, what particular type of graph is best, what corresponding `R` function to use, and what information that `R` function needs in order to build a plot. For categorical data, we want a bar chart and the `ggplot2` function `geom_bar()`. Inside the `aes()` argument, we will specify our variable(s) of interest. 
+
+Here is our first attempt. In Figure \@ref(fig:first-fig), we leave the `y` portion of our formula blank. Doing this implies that we simply want to view the number/count of `outcome30` by type. We will see the two levels of `outcome30` on the x-axis and counts on the y-axis.
+
+(ref:ggfbold) Using **ggplot2** to create a bar chart.
+
+```{r first-fig, fig.cap="(ref:ggfbold)"}
+stent_study%>%
+  ggplot(aes(x=outcome30))+
+  geom_bar()
+```
+
+> **Exercise**:\
+> Explain Figure \@ref(fig:first-fig).
+
+This plot graphically shows us the total number of "stroke" and the total number of "no_event". However, this is not what we want. We want to compare the 30-day outcomes for both treatment groups. So, we need to break the data into different groups based on treatment type. In `ggplot` this means "faceting" your plot: 
+
+(ref:groupvar) Bar charts conditioned on the `group` variable.
+
+```{r split-fig,fig.cap="(ref:groupvar)"}
+stent_study%>%
+  ggplot(aes(x=outcome30))+
+  geom_bar()+
+  facet_wrap(~group)
+```
+
+#### More advanced graphics
+
+As a prelude for things to come, the above graphic needs work. The labels don't help and there is no title. We could add color. Does it make more sense to use proportions? Here is the code and results for a better graph, see Figure \@ref(fig:cs1-fig). Don't worry if this seems a bit advanced, but feel free to examine each new component of this code.
+
+```{r cs1-fig,fig.cap="Better graph."}
+stent_study%>%
+  ggplot(aes(x=group,fill=outcome30))+
+  geom_bar(position = "fill")+
+  labs(title = "Impact of Stents on Stroke",
+       subtitle = "Experiment with 451 Patients",
+       x = "Experimental Group",
+       y = "Number of Events")+
+  theme_bw()
+
+```
+
+Notice throughout the above, we used the pipe operator, `%>%`. This operator allows us to string functions together in a manner that makes it easier to read the code. In the above code, we are sending the data object `stent_study` into the function `gf_props()` to use as data, so we don't need the `data =` argument. In math, this is a composition of functions. Instead of `f(g(x))` we could use a pipe `f(g(x)) = g(x) %>% f()`.
+
+### Conclusion
+
+These two summary statistics (the proportions of people who had a stroke) are useful in looking for differences in the groups, and we are in for a surprise: an additional 9% of patients in the treatment group had a stroke! This is important for two reasons. First, it is contrary to what doctors expected, which was that stents would *reduce* the rate of strokes. Second, it leads to a statistical question: do the data show a real difference due to the treatment?
+
+This second question is subtle. Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50%, we probably won't observe exactly 50 heads. This type of fluctuation is part of almost any type of data generating process. It is possible that the 9% difference in the stent study is due to this natural variation. However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance. So what we are really asking is the following: is the difference so large that we should reject the notion that it was due to chance?
+
+This is a preview of inferential statistics, a subsequent section of this text. While we haven't yet covered statistical tools to fully address these steps, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.
+
+**Be careful:** do not generalize the results of this study to all patients and all stents. This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients. In addition, there are many types of stents and this study only considered the self-expanding Wingspan stent (Boston Scientific). However, this study does leave us with an important lesson: we should keep our eyes open for surprises.
+
+## Homework Problems
+
+1.  **Stent study continued**. Complete a similar analysis for the stent data, but this time use the one year outcome. In particular,
+
+```{=html}
+<!-- -->
+```
+a.  Read the data into your working directory.
+
+```         
+stent_study <- read_csv(___)
+```
+
+b.  Complete the steps below. The start of code is provided below. You will need to add `{r}` to the start of each code chunk or insert your own code chunks to use the code.
+
+```         
+i. Use `glimpse()` on the data.  
+```
+
+```         
+glimpse(___)
+```
+
+```         
+ii. Create a table of `outcome365` and `group`. Comment on the results.  
+```
+
+```         
+stent_study %>%
+  group_by(group,_________)%>%
+  summarize(total=n())
+```
+
+```         
+iii. Create a barchart of the data.  
+```
+
+```         
+stent_study%>%
+  ggplot(aes(x = _________, fill = ________))+
+  geom_bar(position = "fill")+
+  labs(title = "__________",
+       subtitle = "__________",
+       x = "__________",
+       y = "__________")
+
+```
+
+2.  **Migraine and acupuncture**. A migraine is a particularly painful type of headache, which patients sometimes wish to treat with acupuncture. To determine whether acupuncture relieves migraine pain, researchers conducted a randomized controlled study where 89 females diagnosed with migraine headaches were randomly assigned to one of two groups: treatment or control. The 43 patients in the treatment group received acupuncture that is specifically designed to treat migraines. The 46 patients in the control group received placebo acupuncture (needle insertion at nonacupoint locations). Then 24 hours after patients received acupuncture, they were asked if they were pain free.[^01-data-case-study-5]
+
+    The data is in the file `migraine_study.csv` in the `data` folder. Complete the following work:
+
+[^01-data-case-study-5]: G. Allais et al. "Ear acupuncture in the treatment of migraine attacks: a randomized trial on the efficacy of appropriate versus inappropriate acupoints". <http://www.ncbi.nlm.nih.gov/pubmed/21533739> In: Neurological Sci. 32.1 (2011), pp. 173--175.
+
+```{=html}
+<!-- -->
+```
+a.  Read the data into an object called `migraine_study`.
+
+```         
+migraine_study <- read_csv("data/___")
+```
+
+```         
+head(migraine_study)
+```
+
+b.  Create a table of the data.
+
+
+c.  Report the percent of patients in the treatment group who were pain free 24 hours after receiving acupuncture.
+
+d.  Repeat for the control group.
+
+e.  At first glance, does acupuncture appear to be an effective treatment for migraines? Explain your reasoning.
+
+f.  Do the data provide convincing evidence that there is a real pain reduction for those patients in the treatment group? Or do you think that the observed difference might just be due to chance?
+
+```{=html}
+<!-- -->
+```
+
+
+## [Solutions Manual](https://ds-usafa.github.io/PSSE-Solutions-Manual/CS1.html) {.unnumbered}

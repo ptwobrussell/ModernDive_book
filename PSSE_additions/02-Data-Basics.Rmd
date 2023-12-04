@@ -1,0 +1,185 @@
+# Data Basics {#DB}
+
+## Introduction to Data: Unleashing the Power of Information in R
+
+Welcome to the world of data! In today's information-driven age, data is the lifeblood of decision-making, problem-solving, and understanding the world around us. Whether you're an aspiring data scientist, a business analyst, a researcher, or simply curious about the role of data in our lives, this module will introduce you to the fundamental concepts and tools needed to harness the immense potential of data.
+
+But first, let's address a fundamental question: Why do we need data to answer questions?
+
+Data is not just numbers, text, or images; it's a powerful tool that helps us unravel mysteries, make informed choices, and gain insights into the complex phenomena that shape our world. Here are a few reasons why data is indispensable for answering questions:
+
+1. **Evidence-Based Decision Making**: Data provides concrete evidence that allows us to make decisions based on facts rather than intuition or guesswork. Whether it's optimizing business operations, developing public policies, or even making personal choices, data-driven decisions are more likely to lead to success.
+
+2. **Pattern Recognition**: Data allows us to identify patterns, trends, and relationships within vast and complex datasets. By analyzing data, we can detect hidden correlations and gain a deeper understanding of how various factors interact.
+
+3. **Validation and Testing**: Data allows us to test hypotheses and validate our assumptions. It helps us confirm or refute ideas, theories, or claims, ensuring that our conclusions are grounded in empirical evidence.
+
+4. **Predictive Modeling**: With data, we can build models that forecast future outcomes based on historical data. This predictive power is invaluable in fields like finance, healthcare, and climate science, where anticipating future trends is crucial.
+
+5. **Continuous Improvement**: Data facilitates ongoing improvement and optimization. By tracking performance metrics and collecting feedback, organizations and individuals can continually refine their processes and make incremental progress.
+
+6. **Informed Communication**: Data provides a common language for communication and collaboration. When discussing complex topics or presenting information to others, data helps convey ideas more clearly and objectively.
+
+Throughout this module, you'll learn how to work with data using the `R` programming language, a versatile tool widely used for data analysis and visualization. You'll explore data collection, exploration, wrangling, and visualization techniques, equipping you with the skills to extract valuable insights and answer questions using data.
+
+
+## The Data Analysis Process
+
+The following steps make up the **Data Analysis** process, a general roadmap for using data for any of the purposes described in the prior section. 
+
+1.  Identify a research question or problem.
+
+2.  Collect relevant data on the topic.
+
+3.  Explore and understand the data.
+
+4.  Analyze the data.
+
+5.  Form a conclusion.
+
+6.  Make decisions based on the conclusion.
+
+This may seem reminiscent of the scientific process, and this is not a coincidence. Please note that the first step is to identify the problem. This cannot be understated. It is unfortunately too common for analysis to start at the second step, and a great deal of work is done to analyze data without clearly understanding why we are interested in this data in the first place. 
+
+In this module, we will focus on steps 1-4. In the *Statistical Inference* and *Regression* modules, we will focus on steps 3-5. In these modules, we will discuss how to extend results of our exploration and analysis to a broader population. Traditional methods for inference and regression are rooted in mathematical theory, while modern methods utilize simulation. These methods all start with conducting exploration and visualization using the methods we'll learn in this module.   
+
+
+## Data Frames in `R`
+
+In this module, we will use `R` and various packages (primarily `tidyverse`) for the exploration and analysis of data. At this point, we will assume that you already have `R` and `RStudio` installed. We also assume that you are familiar with installing and loading packages. If you need a refresher, see the `R` installation guide. 
+
+### Two Ways of Loading Data
+
+All of the data that we will use in the module will either be loaded via an `R` package or read in from a file. For example, the `ncbirths` data frame comes from the `openintro` package. This means if you haven't already, you'll need to install the package:
+
+```{r, eval=F}
+install.package("openintro")
+```
+
+Next, you'll need to load it:
+
+```{r}
+library(openintro)
+```
+
+Now that the package is loaded, `ncbirths` is ready to use. Because it is part of an `R` package, it comes with helpful documentation, accessed with `?ncbirths`. This documentation contains helpful information about the origin of the data and types of data included:
+
+```{r, eval=F}
+?ncbirths
+```
+
+
+We will also load data by reading from a file. For example, we have the `stent_study.csv` file contained in a folder called `data`. We can use the `read_csv()` function to load it and assign it to the object `stent_study`. 
+
+```{r message=FALSE}
+stent_study <- read_csv("data/stent_study.csv")
+```
+
+You can access this `.csv` file via the module documentation. When you use `read_csv()`, you will need to replace `data` with the appropriate path for your computer. 
+
+Note that because we loaded this data from a file, no embedded documentation exists:
+
+```{r}
+?stent_study
+```
+
+### Exploring a Data Frame
+
+Once we have access to a data frame, we should explore it. ALWAYS take the time to get familiar with the structure of the data frame prior to conducting further analysis. You should have some idea of the research question prior to this exploration. Some useful tools are described below: 
+
+- `head()`: displays the first 6 rows of a data frame. Note that you can add a `n = ` argument to change the number of rows displayed. 
+
+- `View()`: opens a tab displaying the data frame in spreadsheet format.
+
+- `str()`: displays a list of variables (columns) along with how they are stored and some example values. 
+
+- `glimpse()`: from `tidyverse`; similar to `str()` but slightly cleaner.
+
+- `summary()`: displays numerical summaries of variables based on the respective variable types.
+
+This is by no means an exhaustive list. Take some time to explore these tools on your own. 
+
+Data frames are typically arranged with *cases* or *observational units* as the rows and *variables* as the columns. 
+
+*cases*/*observational units*: individual experimental units in a data frame
+
+*variables*: characteristics collected on cases/observational units
+
+For example, consider the `ncbirths` data frame:
+
+```{r}
+head(ncbirths)
+str(ncbirths)
+```
+
+Each row in this data frame represents an *observational unit* or a *case*. In this example, a *case* is a birth. Each column represents a *variable*. There are 13 variables in this data frame, containing information about births like father's age, mother's age, maturity status of the mother, etc. 
+
+
+### Tidy Data
+
+In this course, we will usually interact with data frames that are **tidy**. Tidy data is a structured and standardized way of organizing and formatting data sets so that they are easy to work with, analyze, and visualize. The core idea behind tidy data is to make data more understandable and user-friendly by adhering to a set of principles for data organization.
+
+The key principles of tidy data are as follows:
+
+1. Each variable forms a column: In tidy data, each variable (e.g., a measurement, attribute, or characteristic) is represented as a separate column in the data frame or table. This makes it clear which variables are being measured or observed.
+
+2. Each case or observational unit forms a row: Each row in the data represents a single observation or case. Observations that share common attributes or characteristics are grouped together in rows.
+
+3. Each type of observational unit forms a table: Tidy data is often organized into separate tables for each type of observational unit or data source. This helps maintain clear relationships between different parts of the data.
+
+Tidy data is considered good for several reasons:
+
+- Readability and understandability: Tidy data makes it easier for analysts and data scientists to understand the structure of the data and the relationships between variables. This standard format reduces ambiguity and confusion.
+
+- Compatibility with data tools: Tidy data is compatible with a wide range of data manipulation and visualization tools, such as R's `tidyverse` packages (e.g., `dplyr` and `ggplot2`) and Python's `pandas` library. This compatibility streamlines the data analysis workflow.
+
+- Facilitates data analysis and visualization: Tidy data simplifies data analysis and visualization tasks because it aligns with the principles of tidyverse and similar libraries. Analysts can write more concise and readable code when the data is organized tidily.
+
+- Supports data sharing and collaboration: Tidy data is suitable for sharing and collaborating on data analysis projects because it provides a clear and consistent data structure that others can easily understand and work with.
+
+Overall, tidy data promotes good data hygiene and helps ensure that data analysis is efficient, reproducible, and less error-prone. By adhering to the principles of tidy data, analysts can spend less time wrangling data and more time gaining insights from it.
+
+### Types of Variables
+
+Note in the `ncbirthds` data frame that the variables are stored differently from one another. First consider `weight`. It is said to be a *numerical variable* (sometimes called a quantitative variable) since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values. 
+
+The `visits` variable is also numerical; it is sensible to add, subtract, or take averages with those values, although it seems to be a little different than `weight`. This variable represents number of hospital visits during pregnancy and can only be a whole non-negative number ($0$, $1$, $2$, $...$). For this reason, the `visits` variable is said to be **discrete** since it can only take specific numerical values. On the other hand, the birth weight variable is said to be **continuous** because it can take on any value in some interval. Now technically, there are no truly continuous numerical variables since all measurements are finite up to some level of accuracy or measurement precision (e.g., we recorded birth weights to the nearest hundredth of a pound).
+
+On the other hand, consider the `marital` variable. This variable is not numerical, and values are stored as "married" or "not married". This is an example of a **categorical variable**. It does not make sense to add, subtract or average across categorical variables. The tools we use to summarize and visualize categorical data are often different from those we use for numerical data, so it is important for us to distinguish between the two. 
+
+Note that sometimes, categorical data is stored numerically in a data frame. For example, telephone area codes are three digit numbers, but we would not classify a variable reporting telephone area codes as numerical; even though area codes are made up of numerical digits, their average, sum, and difference have no clear meaning. 
+
+```{r tax-fig, echo=FALSE, fig.cap="Taxonomy of Variables."}
+plot(c(-0.15, 1.3), 0:1, type = 'n', axes = FALSE, xlab = '', ylab = '')
+
+text(0.6, 0.9, 'all variables')
+rect(0.4, 0.8, 0.8, 1)
+
+text(0.25, 0.5, 'numerical')
+rect(0.1, 0.4, 0.4, 0.6)
+arrows(0.45, 0.78, 0.34, 0.62, length = 0.08)
+
+text(0.9, 0.5, 'categorical')
+rect(0.73, 0.4, 1.07, 0.6)
+arrows(0.76, 0.78, 0.85, 0.62, length = 0.08)
+
+text(0, 0.1, 'continuous')
+rect(-0.17, 0, 0.17, 0.2)
+arrows(0.13, 0.38, 0.05, 0.22, length = 0.08)
+
+text(0.39, 0.1, 'discrete')
+rect(0.25, 0, 0.53, 0.2)
+arrows(0.35, 0.38, 0.4, 0.22, length = 0.08)
+
+text(0.77, 0.105, 'nominal', col = COL[6], cex = 0.7)
+rect(0.64, 0, 0.9, 0.2, border = COL[6])
+arrows(0.82, 0.38, 0.77, 0.22, length = 0.08, col = COL[6])
+
+text(1.12, 0.1, 'ordinal', col = COL[6])
+rect(0.99, 0, 1.25, 0.2, border = COL[6])
+arrows(1.02, 0.38, 1.1, 0.22, length = 0.08, col = COL[6])
+```
+
+
+
+## [Solutions Manual](https://ds-usafa.github.io/PSSE-Solutions-Manual/CS1.html) {.unnumbered}
