@@ -1,13 +1,5 @@
 (ref:tidyversepart) Data Science with `tidyverse`
 
-```{r echo=FALSE, results="asis", purl=FALSE}
-if (is_latex_output()) {
-  cat("# (PART) (ref:tidyversepart) {-} ")
-} else {
-  cat("# (PART) Data Science with tidyverse {-} ")
-}
-```
-
 # Data Visualization {#viz}
 
 ```{r setup-viz, include=FALSE, purl=FALSE}

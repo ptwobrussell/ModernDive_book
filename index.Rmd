@@ -23,6 +23,10 @@ cover-image: "images/logos/book_cover.png"
 url: 'https\://moderndive.com/'
 apple-touch-icon: "images/logos/favicons/apple-touch-icon.png"
 favicon: "images/logos/favicons/favicon.ico"
+output:
+  bookdown::pdf_book:
+    latex_engine: xelatex
+before_chapter_script: "library_load.R"
 ---
 
 
@@ -149,7 +153,7 @@ if (is_html_output()) {
 
 <!-- purl() all the chapter Rmd's in a new session -->
 ```{bash, include=FALSE, purl=FALSE}
-Rscript -e "source('purl.R', local = TRUE)"
+/opt/homebrew/bin/Rscript -e "source('purl.R', local = TRUE)"
 ```
 
 

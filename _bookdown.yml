@@ -5,45 +5,69 @@ delete_merged_file: true
 # want to omit with hashtags. Note: index.Rmd must not be commented out.
 rmd_files:
   html: [
-    "index.Rmd",
-    "00-foreword.Rmd",
-    "00-preface.Rmd",
-    "01-getting-started.Rmd",
-    "02-visualization.Rmd",
-    "03-wrangling.Rmd",
-    "04-tidy.Rmd",
-    "05-regression.Rmd",
-    "06-multiple-regression.Rmd",
-    "07-sampling.Rmd",
-    "08-confidence-intervals.Rmd",
-    "09-hypothesis-testing.Rmd",
-    "10-inference-for-regression.Rmd",
-    "11-tell-your-story-with-data.Rmd",
-    "91-appendixA.Rmd",
-    "92-appendixB.Rmd",
-    "93-appendixC.Rmd",
-    "94-appendixD.Rmd",
-    "95-appendixE.Rmd",
-    "99-references.Rmd"
+   "index.Rmd",
+
+   # Block 1: Probability, PSSE Readings
+   "PSSE_additions/07-Probability-Case-Study.Rmd",
+   "PSSE_additions/08-Probability-Rules.Rmd",
+   "PSSE_additions/09-Conditional-Probability.Rmd",
+   "PSSE_additions/10-RandomVariables.Rmd",
+   "PSSE_additions/11-Continuous-Random-Variables.Rmd",
+   "PSSE_additions/12-Named-Discrete-Distributions.Rmd",
+   "PSSE_additions/13-Named-Continuous-Distributions.Rmd",
+
+   # Block 2: Data with Tidyverse, IPS (PSSE), Modern Dive Injections
+   "PSSE_additions/01-Data-Case-Study.Rmd",
+   "PSSE_additions/02-Data-Basics.Rmd",
+   "PSSE_additions/03-Overview-of-Data-Collection-Principles.Rmd",
+   "PSSE_additions/04-Studies.Rmd",
+   "02-Visualization.Rmd",
+   "03-Wrangling.Rmd",
+
+   # Block 3: Statistical Inference, Modern Dive Injections
+   "07-sampling.Rmd",
+   "08-confidence-intervals.Rmd",
+   "09-hypothesis-testing.Rmd",
+
+   # Block 4: Regression, Modern Dive Injections
+
+   "05-regression.Rmd",
+   "10-inference-for-regression.Rmd",
+   "06-multiple-regression.Rmd",
+
     ]
   latex: [
-    "index.Rmd",
-    "00-foreword.Rmd",
-    "00-preface.Rmd",
-    "01-getting-started.Rmd",
-    "02-visualization.Rmd",
-    "03-wrangling.Rmd",
-    "04-tidy.Rmd",
-    "05-regression.Rmd",
-    "06-multiple-regression.Rmd",
-    "07-sampling.Rmd",
-    "08-confidence-intervals.Rmd",
-    "09-hypothesis-testing.Rmd",
-    "10-inference-for-regression.Rmd",
-    "11-tell-your-story-with-data.Rmd",
-    "91-appendixA.Rmd",
-    "95-appendixE.Rmd",
-    "99-references.Rmd"
+   "index.Rmd",
+   "00-preface.Rmd",
+
+   # Block 1: Probability, PSSE Readings
+   "PSSE_additions/07-Probability-Case-Study.Rmd",
+   "PSSE_additions/08-Probability-Rules.Rmd",
+   "PSSE_additions/09-Conditional-Probability.Rmd",
+   "PSSE_additions/10-RandomVariables.Rmd",
+   "PSSE_additions/11-Continuous-Random-Variables.Rmd",
+   "PSSE_additions/12-Named-Discrete-Distributions.Rmd",
+   "PSSE_additions/13-Named-Continuous-Distributions.Rmd",
+
+   # Block 2: Data with Tidyverse, IPS (PSSE), Modern Dive Injections
+   "PSSE_additions/01-Data-Case-Study.Rmd",
+   "PSSE_additions/02-Data-Basics.Rmd",
+   "PSSE_additions/03-Overview-of-Data-Collection-Principles.Rmd",
+   "PSSE_additions/04-Studies.Rmd",
+   "02-Visualization.Rmd",
+   "03-Wrangling.Rmd",
+
+   # Block 3: Statistical Inference, Modern Dive Injections
+   "07-sampling.Rmd",
+   "08-confidence-intervals.Rmd",
+   "09-hypothesis-testing.Rmd",
+
+   # Block 4: Regression, Modern Dive Injections
+
+   "05-regression.Rmd",
+   "10-inference-for-regression.Rmd",
+   "06-multiple-regression.Rmd",
+
     ]
 language:
   label:
