@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Statistical Inference via Data Science</title>
+  <title>Chapter 9 Data Basics | Statistical Inference via Data Science</title>
   <meta name="description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Statistical Inference via Data Science" />
+  <meta property="og:title" content="Chapter 9 Data Basics | Statistical Inference via Data Science" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://moderndive.com//images/logos/book_cover.png" />
   <meta property="og:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="github-repo" content="moderndive/ModernDive_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Statistical Inference via Data Science" />
+  <meta name="twitter:title" content="Chapter 9 Data Basics | Statistical Inference via Data Science" />
   <meta name="twitter:site" content="@ModernDive" />
   <meta name="twitter:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="twitter:image" content="https://moderndive.com//images/logos/book_cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/logos/favicons/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/logos/favicons/favicon.ico" type="image/x-icon" />
-
-<link rel="next" href="foreword.html"/>
+<link rel="prev" href="8-CS1.html"/>
+<link rel="next" href="10-ODCP.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -669,47 +669,154 @@ div.csl-indent {
 <html>
 <img src='https://moderndive.com/wide_format.png' alt="ModernDive">
 </html>
-<div id="header">
-<h1 class="title">Statistical Inference via Data Science</h1>
-<h2 class="subtitle"><em>A ModernDive into R and the Tidyverse</em></h2>
-<p class="author"><em>Chester Ismay and Albert Y. Kim <br> Foreword by Kelly S. McConville</em></p>
-<p class="date"><em>December 05, 2023</em></p>
+<div id="DB" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Data Basics<a href="9-DB.html#DB" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-to-data-unleashing-the-power-of-information-in-r-1" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Introduction to Data: Unleashing the Power of Information in R<a href="9-DB.html#introduction-to-data-unleashing-the-power-of-information-in-r-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Welcome to the world of data! In today’s information-driven age, data is the lifeblood of decision-making, problem-solving, and understanding the world around us. Whether you’re an aspiring data scientist, a business analyst, a researcher, or simply curious about the role of data in our lives, this module will introduce you to the fundamental concepts and tools needed to harness the immense potential of data.</p>
+<p>But first, let’s address a fundamental question: Why do we need data to answer questions?</p>
+<p>Data is not just numbers, text, or images; it’s a powerful tool that helps us unravel mysteries, make informed choices, and gain insights into the complex phenomena that shape our world. Here are a few reasons why data is indispensable for answering questions:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Evidence-Based Decision Making</strong>: Data provides concrete evidence that allows us to make decisions based on facts rather than intuition or guesswork. Whether it’s optimizing business operations, developing public policies, or even making personal choices, data-driven decisions are more likely to lead to success.</p></li>
+<li><p><strong>Pattern Recognition</strong>: Data allows us to identify patterns, trends, and relationships within vast and complex datasets. By analyzing data, we can detect hidden correlations and gain a deeper understanding of how various factors interact.</p></li>
+<li><p><strong>Validation and Testing</strong>: Data allows us to test hypotheses and validate our assumptions. It helps us confirm or refute ideas, theories, or claims, ensuring that our conclusions are grounded in empirical evidence.</p></li>
+<li><p><strong>Predictive Modeling</strong>: With data, we can build models that forecast future outcomes based on historical data. This predictive power is invaluable in fields like finance, healthcare, and climate science, where anticipating future trends is crucial.</p></li>
+<li><p><strong>Continuous Improvement</strong>: Data facilitates ongoing improvement and optimization. By tracking performance metrics and collecting feedback, organizations and individuals can continually refine their processes and make incremental progress.</p></li>
+<li><p><strong>Informed Communication</strong>: Data provides a common language for communication and collaboration. When discussing complex topics or presenting information to others, data helps convey ideas more clearly and objectively.</p></li>
+</ol>
+<p>Throughout this module, you’ll learn how to work with data using the <code>R</code> programming language, a versatile tool widely used for data analysis and visualization. You’ll explore data collection, exploration, wrangling, and visualization techniques, equipping you with the skills to extract valuable insights and answer questions using data.</p>
 </div>
-<div id="welcome-to-moderndive" class="section level1 unnumbered hasAnchor">
-<h1>Welcome to ModernDive<a href="index.html#welcome-to-moderndive" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<!-- purl() all the chapter Rmd's in a new session -->
-<!--
-<div class="announcement">
-<p><strong>This is a previous version (v<code>r version</code>) of
-<em>ModernDive</em> and may be out of date. For the current version of
-<em>ModernDive</em>, please go to <a
-href="https://moderndive.com/">ModernDive.com</a>.</strong></p>
+<div id="the-data-analysis-process" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> The Data Analysis Process<a href="9-DB.html#the-data-analysis-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following steps make up the <strong>Data Analysis</strong> process, a general roadmap for using data for any of the purposes described in the prior section.</p>
+<ol style="list-style-type: decimal">
+<li><p>Identify a research question or problem.</p></li>
+<li><p>Collect relevant data on the topic.</p></li>
+<li><p>Explore and understand the data.</p></li>
+<li><p>Analyze the data.</p></li>
+<li><p>Form a conclusion.</p></li>
+<li><p>Make decisions based on the conclusion.</p></li>
+</ol>
+<p>This may seem reminiscent of the scientific process, and this is not a coincidence. Please note that the first step is to identify the problem. This cannot be understated. It is unfortunately too common for analysis to start at the second step, and a great deal of work is done to analyze data without clearly understanding why we are interested in this data in the first place.</p>
+<p>In this module, we will focus on steps 1-4. In the <em>Statistical Inference</em> and <em>Regression</em> modules, we will focus on steps 3-5. In these modules, we will discuss how to extend results of our exploration and analysis to a broader population. Traditional methods for inference and regression are rooted in mathematical theory, while modern methods utilize simulation. These methods all start with conducting exploration and visualization using the methods we’ll learn in this module.</p>
 </div>
--->
-<!--
-<div class="learncheck">
-<p><strong>Please note that you are currently looking at a preview of a
-future version of <em>ModernDive</em>, which is currently being edited.
-For the current version of <em>ModernDive</em>, please visit <a
-href="https://moderndive.com/">ModernDive.com</a>.</strong></p>
+<div id="data-frames-in-r" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Data Frames in <code>R</code><a href="9-DB.html#data-frames-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this module, we will use <code>R</code> and various packages (primarily <code>tidyverse</code>) for the exploration and analysis of data. At this point, we will assume that you already have <code>R</code> and <code>RStudio</code> installed. We also assume that you are familiar with installing and loading packages. If you need a refresher, see the <code>R</code> installation guide.</p>
+<div id="two-ways-of-loading-data" class="section level3 hasAnchor" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Two Ways of Loading Data<a href="9-DB.html#two-ways-of-loading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>All of the data that we will use in the module will either be loaded via an <code>R</code> package or read in from a file. For example, the <code>ncbirths</code> data frame comes from the <code>openintro</code> package. This means if you haven’t already, you’ll need to install the package:</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="9-DB.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.package</span>(<span class="st">&quot;openintro&quot;</span>)</span></code></pre></div>
+<p>Next, you’ll need to load it:</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="9-DB.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openintro)</span></code></pre></div>
+<pre><code>Loading required package: airports</code></pre>
+<pre><code>Loading required package: cherryblossom</code></pre>
+<pre><code>Loading required package: usdata</code></pre>
+<pre><code>
+Attaching package: &#39;openintro&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:mosaic&#39;:
+
+    dotPlot</code></pre>
+<pre><code>The following objects are masked from &#39;package:lattice&#39;:
+
+    ethanol, lsegments</code></pre>
+<p>Now that the package is loaded, <code>ncbirths</code> is ready to use. Because it is part of an <code>R</code> package, it comes with helpful documentation, accessed with <code>?ncbirths</code>. This documentation contains helpful information about the origin of the data and types of data included:</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="9-DB.html#cb305-1" aria-hidden="true" tabindex="-1"></a>?ncbirths</span></code></pre></div>
+<p>We will also load data by reading from a file. For example, we have the <code>stent_study.csv</code> file contained in a folder called <code>data</code>. We can use the <code>read_csv()</code> function to load it and assign it to the object <code>stent_study</code>.</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="9-DB.html#cb306-1" aria-hidden="true" tabindex="-1"></a>stent_study <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/stent_study.csv&quot;</span>)</span></code></pre></div>
+<p>You can access this <code>.csv</code> file via the module documentation. When you use <code>read_csv()</code>, you will need to replace <code>data</code> with the appropriate path for your computer.</p>
+<p>Note that because we loaded this data from a file, no embedded documentation exists:</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="9-DB.html#cb307-1" aria-hidden="true" tabindex="-1"></a>?stent_study</span></code></pre></div>
+<pre><code>No documentation for &#39;stent_study&#39; in specified packages and libraries:
+you could try &#39;??stent_study&#39;</code></pre>
 </div>
--->
-<!-- include=FALSE for PDF sending to CRC -->
-<p>This is the <a href="https://moderndive.com/">website</a> for <em>Statistical Inference via Data Science: A ModernDive into R and the Tidyverse</em>! Visit the <a href="https://github.com/moderndive/ModernDive_book">GitHub repository for this site</a> and find the book on <a href="https://www.amazon.com/Statistical-Inference-via-Data-Science/dp/0367409828/">Amazon</a>. You can also purchase it at <a href="https://www.routledge.com/Statistical-Inference-via-Data-Science-A-ModernDive-into-R-and-the-Tidyverse/Ismay-Kim/p/book/9780367409821?utm_source=author&amp;utm_medium=shared_link&amp;utm_campaign=B043134_jm1_5ll_6rm_t081_1al_statisticalinferenceviadatascienceauthorshare">CRC Press</a>.</p>
-<p></br>
-<img src="images/logos/book_cover.png" width="350" />
-</br></p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://chester.rbind.io/">Chester Ismay</a> and <a href="https://rudeboybert.rbind.io/">Albert Y. Kim</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-<!-- index.Rmd has to have some content in it or it won't create an index.html 
-file. Make sure to keep this in so that index.html is included. -->
+<div id="exploring-a-data-frame" class="section level3 hasAnchor" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> Exploring a Data Frame<a href="9-DB.html#exploring-a-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once we have access to a data frame, we should explore it. ALWAYS take the time to get familiar with the structure of the data frame prior to conducting further analysis. You should have some idea of the research question prior to this exploration. Some useful tools are described below:</p>
+<ul>
+<li><p><code>head()</code>: displays the first 6 rows of a data frame. Note that you can add a <code>n =</code> argument to change the number of rows displayed.</p></li>
+<li><p><code>View()</code>: opens a tab displaying the data frame in spreadsheet format.</p></li>
+<li><p><code>str()</code>: displays a list of variables (columns) along with how they are stored and some example values.</p></li>
+<li><p><code>glimpse()</code>: from <code>tidyverse</code>; similar to <code>str()</code> but slightly cleaner.</p></li>
+<li><p><code>summary()</code>: displays numerical summaries of variables based on the respective variable types.</p></li>
+</ul>
+<p>This is by no means an exhaustive list. Take some time to explore these tools on your own.</p>
+<p>Data frames are typically arranged with <em>cases</em> or <em>observational units</em> as the rows and <em>variables</em> as the columns.</p>
+<p><em>cases</em>/<em>observational units</em>: individual experimental units in a data frame</p>
+<p><em>variables</em>: characteristics collected on cases/observational units</p>
+<p>For example, consider the <code>ncbirths</code> data frame:</p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="9-DB.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ncbirths)</span></code></pre></div>
+<pre><code># A tibble: 6 × 13
+   fage  mage mature    weeks premie visits marital gained weight lowbirthweight
+  &lt;int&gt; &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt;    &lt;int&gt;  &lt;dbl&gt; &lt;fct&gt;         
+1    NA    13 younger …    39 full …     10 not ma…     38   7.63 not low       
+2    NA    14 younger …    42 full …     15 not ma…     20   7.88 not low       
+3    19    15 younger …    37 full …     11 not ma…     38   6.63 not low       
+4    21    15 younger …    41 full …      6 not ma…     34   8    not low       
+5    NA    15 younger …    39 full …      9 not ma…     27   6.38 not low       
+6    NA    15 younger …    38 full …     19 not ma…     22   5.38 low           
+# ℹ 3 more variables: gender &lt;fct&gt;, habit &lt;fct&gt;, whitemom &lt;fct&gt;</code></pre>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="9-DB.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ncbirths)</span></code></pre></div>
+<pre><code>tibble [1,000 × 13] (S3: tbl_df/tbl/data.frame)
+ $ fage          : int [1:1000] NA NA 19 21 NA NA 18 17 NA 20 ...
+ $ mage          : int [1:1000] 13 14 15 15 15 15 15 15 16 16 ...
+ $ mature        : Factor w/ 2 levels &quot;mature mom&quot;,&quot;younger mom&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+ $ weeks         : int [1:1000] 39 42 37 41 39 38 37 35 38 37 ...
+ $ premie        : Factor w/ 2 levels &quot;full term&quot;,&quot;premie&quot;: 1 1 1 1 1 1 1 2 1 1 ...
+ $ visits        : int [1:1000] 10 15 11 6 9 19 12 5 9 13 ...
+ $ marital       : Factor w/ 2 levels &quot;not married&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ gained        : int [1:1000] 38 20 38 34 27 22 76 15 NA 52 ...
+ $ weight        : num [1:1000] 7.63 7.88 6.63 8 6.38 5.38 8.44 4.69 8.81 6.94 ...
+ $ lowbirthweight: Factor w/ 2 levels &quot;low&quot;,&quot;not low&quot;: 2 2 2 2 2 1 2 1 2 2 ...
+ $ gender        : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 2 1 2 1 2 2 2 2 1 ...
+ $ habit         : Factor w/ 2 levels &quot;nonsmoker&quot;,&quot;smoker&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ whitemom      : Factor w/ 2 levels &quot;not white&quot;,&quot;white&quot;: 1 1 2 2 1 1 1 1 2 2 ...</code></pre>
+<p>Each row in this data frame represents an <em>observational unit</em> or a <em>case</em>. In this example, a <em>case</em> is a birth. Each column represents a <em>variable</em>. There are 13 variables in this data frame, containing information about births like father’s age, mother’s age, maturity status of the mother, etc.</p>
+</div>
+<div id="tidy-data" class="section level3 hasAnchor" number="9.3.3">
+<h3><span class="header-section-number">9.3.3</span> Tidy Data<a href="9-DB.html#tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this course, we will usually interact with data frames that are <strong>tidy</strong>. Tidy data is a structured and standardized way of organizing and formatting data sets so that they are easy to work with, analyze, and visualize. The core idea behind tidy data is to make data more understandable and user-friendly by adhering to a set of principles for data organization.</p>
+<p>The key principles of tidy data are as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p>Each variable forms a column: In tidy data, each variable (e.g., a measurement, attribute, or characteristic) is represented as a separate column in the data frame or table. This makes it clear which variables are being measured or observed.</p></li>
+<li><p>Each case or observational unit forms a row: Each row in the data represents a single observation or case. Observations that share common attributes or characteristics are grouped together in rows.</p></li>
+<li><p>Each type of observational unit forms a table: Tidy data is often organized into separate tables for each type of observational unit or data source. This helps maintain clear relationships between different parts of the data.</p></li>
+</ol>
+<p>Tidy data is considered good for several reasons:</p>
+<ul>
+<li><p>Readability and understandability: Tidy data makes it easier for analysts and data scientists to understand the structure of the data and the relationships between variables. This standard format reduces ambiguity and confusion.</p></li>
+<li><p>Compatibility with data tools: Tidy data is compatible with a wide range of data manipulation and visualization tools, such as R’s <code>tidyverse</code> packages (e.g., <code>dplyr</code> and <code>ggplot2</code>) and Python’s <code>pandas</code> library. This compatibility streamlines the data analysis workflow.</p></li>
+<li><p>Facilitates data analysis and visualization: Tidy data simplifies data analysis and visualization tasks because it aligns with the principles of tidyverse and similar libraries. Analysts can write more concise and readable code when the data is organized tidily.</p></li>
+<li><p>Supports data sharing and collaboration: Tidy data is suitable for sharing and collaborating on data analysis projects because it provides a clear and consistent data structure that others can easily understand and work with.</p></li>
+</ul>
+<p>Overall, tidy data promotes good data hygiene and helps ensure that data analysis is efficient, reproducible, and less error-prone. By adhering to the principles of tidy data, analysts can spend less time wrangling data and more time gaining insights from it.</p>
+</div>
+<div id="types-of-variables" class="section level3 hasAnchor" number="9.3.4">
+<h3><span class="header-section-number">9.3.4</span> Types of Variables<a href="9-DB.html#types-of-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Note in the <code>ncbirthds</code> data frame that the variables are stored differently from one another. First consider <code>weight</code>. It is said to be a <em>numerical variable</em> (sometimes called a quantitative variable) since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.</p>
+<p>The <code>visits</code> variable is also numerical; it is sensible to add, subtract, or take averages with those values, although it seems to be a little different than <code>weight</code>. This variable represents number of hospital visits during pregnancy and can only be a whole non-negative number (<span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(...\)</span>). For this reason, the <code>visits</code> variable is said to be <strong>discrete</strong> since it can only take specific numerical values. On the other hand, the birth weight variable is said to be <strong>continuous</strong> because it can take on any value in some interval. Now technically, there are no truly continuous numerical variables since all measurements are finite up to some level of accuracy or measurement precision (e.g., we recorded birth weights to the nearest hundredth of a pound).</p>
+<p>On the other hand, consider the <code>marital</code> variable. This variable is not numerical, and values are stored as “married” or “not married”. This is an example of a <strong>categorical variable</strong>. It does not make sense to add, subtract or average across categorical variables. The tools we use to summarize and visualize categorical data are often different from those we use for numerical data, so it is important for us to distinguish between the two.</p>
+<p>Note that sometimes, categorical data is stored numerically in a data frame. For example, telephone area codes are three digit numbers, but we would not classify a variable reporting telephone area codes as numerical; even though area codes are made up of numerical digits, their average, sum, and difference have no clear meaning.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tax-fig"></span>
+<img src="ModernDive_files/figure-html/tax-fig-1.png" alt="Taxonomy of Variables." width="\textwidth" />
+<p class="caption">
+FIGURE 9.1: Taxonomy of Variables.
+</p>
+</div>
+</div>
+</div>
+<div id="solutions-manual-8" class="section level2 unnumbered hasAnchor">
+<h2><a href="https://ds-usafa.github.io/PSSE-Solutions-Manual/CS1.html">Solutions Manual</a><a href="9-DB.html#solutions-manual-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="foreword.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="8-CS1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="10-ODCP.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -740,7 +847,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/moderndive/moderndive_book/edit/master/index.Rmd",
+"link": "https://github.com/moderndive/moderndive_book/edit/master/PSSE_additions/02-Data-Basics.Rmd",
 "text": "Edit"
 },
 "history": {

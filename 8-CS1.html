@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Statistical Inference via Data Science</title>
+  <title>Chapter 8 Data Case Study | Statistical Inference via Data Science</title>
   <meta name="description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Statistical Inference via Data Science" />
+  <meta property="og:title" content="Chapter 8 Data Case Study | Statistical Inference via Data Science" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://moderndive.com//images/logos/book_cover.png" />
   <meta property="og:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="github-repo" content="moderndive/ModernDive_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Statistical Inference via Data Science" />
+  <meta name="twitter:title" content="Chapter 8 Data Case Study | Statistical Inference via Data Science" />
   <meta name="twitter:site" content="@ModernDive" />
   <meta name="twitter:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="twitter:image" content="https://moderndive.com//images/logos/book_cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/logos/favicons/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/logos/favicons/favicon.ico" type="image/x-icon" />
-
-<link rel="next" href="foreword.html"/>
+<link rel="prev" href="7-CONTNNAMED.html"/>
+<link rel="next" href="9-DB.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -669,47 +669,254 @@ div.csl-indent {
 <html>
 <img src='https://moderndive.com/wide_format.png' alt="ModernDive">
 </html>
-<div id="header">
-<h1 class="title">Statistical Inference via Data Science</h1>
-<h2 class="subtitle"><em>A ModernDive into R and the Tidyverse</em></h2>
-<p class="author"><em>Chester Ismay and Albert Y. Kim <br> Foreword by Kelly S. McConville</em></p>
-<p class="date"><em>December 05, 2023</em></p>
+<div id="CS1" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Data Case Study<a href="8-CS1.html#CS1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-to-data-unleashing-the-power-of-information-in-r" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Introduction to Data: Unleashing the Power of Information in R<a href="8-CS1.html#introduction-to-data-unleashing-the-power-of-information-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Welcome to the world of data! In today’s information-driven age, data is the lifeblood of decision-making, problem-solving, and understanding the world around us. Whether you’re an aspiring data scientist, a business analyst, a researcher, or simply curious about the role of data in our lives, this module will introduce you to the fundamental concepts and tools needed to harness the immense potential of data.</p>
+<p>But first, let’s address a fundamental question: Why do we need data to answer questions?</p>
+<p>Data is not just numbers, text, or images; it’s a powerful tool that helps us unravel mysteries, make informed choices, and gain insights into the complex phenomena that shape our world. Here are a few reasons why data is indispensable for answering questions:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Evidence-Based Decision Making</strong>: Data provides concrete evidence that allows us to make decisions based on facts rather than intuition or guesswork. Whether it’s optimizing business operations, developing public policies, or even making personal choices, data-driven decisions are more likely to lead to success.</p></li>
+<li><p><strong>Pattern Recognition</strong>: Data allows us to identify patterns, trends, and relationships within vast and complex datasets. By analyzing data, we can detect hidden correlations and gain a deeper understanding of how various factors interact.</p></li>
+<li><p><strong>Validation and Testing</strong>: Data allows us to test hypotheses and validate our assumptions. It helps us confirm or refute ideas, theories, or claims, ensuring that our conclusions are grounded in empirical evidence.</p></li>
+<li><p><strong>Predictive Modeling</strong>: With data, we can build models that forecast future outcomes based on historical data. This predictive power is invaluable in fields like finance, healthcare, and climate science, where anticipating future trends is crucial.</p></li>
+<li><p><strong>Continuous Improvement</strong>: Data facilitates ongoing improvement and optimization. By tracking performance metrics and collecting feedback, organizations and individuals can continually refine their processes and make incremental progress.</p></li>
+<li><p><strong>Informed Communication</strong>: Data provides a common language for communication and collaboration. When discussing complex topics or presenting information to others, data helps convey ideas more clearly and objectively.</p></li>
+</ol>
+<p>Throughout this module, you’ll learn how to work with data using the <code>R</code> programming language, a versatile tool widely used for data analysis and visualization. You’ll explore data collection, exploration, wrangling, and visualization techniques, equipping you with the skills to extract valuable insights and answer questions using data.</p>
 </div>
-<div id="welcome-to-moderndive" class="section level1 unnumbered hasAnchor">
-<h1>Welcome to ModernDive<a href="index.html#welcome-to-moderndive" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<!-- purl() all the chapter Rmd's in a new session -->
-<!--
-<div class="announcement">
-<p><strong>This is a previous version (v<code>r version</code>) of
-<em>ModernDive</em> and may be out of date. For the current version of
-<em>ModernDive</em>, please go to <a
-href="https://moderndive.com/">ModernDive.com</a>.</strong></p>
+<div id="case-study-1" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Case Study<a href="8-CS1.html#case-study-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before we dive into principles of data, data collection, visualization and exploration, we will walk through an introductory “case study”. The idea is to provide a preview of what we’ll cover in this section. You are not expected to understand much of the execution at this time, but you should be able to follow along with the example. All concepts and tools will be covered more deeply in the subsequent chapters.</p>
+<p>We will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke. <a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> <a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:</p>
+<div id="research-question" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Research question<a href="8-CS1.html#research-question" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p>Does the use of stents reduce the risk of stroke?</p>
+</blockquote>
 </div>
--->
-<!--
-<div class="learncheck">
-<p><strong>Please note that you are currently looking at a preview of a
-future version of <em>ModernDive</em>, which is currently being edited.
-For the current version of <em>ModernDive</em>, please visit <a
-href="https://moderndive.com/">ModernDive.com</a>.</strong></p>
+<div id="collect-the-relevant-data" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Collect the relevant data<a href="8-CS1.html#collect-the-relevant-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The researchers who asked this question collected data on 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:</p>
+<p><strong>Treatment group</strong>. Patients in the treatment group received a stent and medical management. The medical management included medications, management of risk factors, and help in lifestyle modification.</p>
+<p><strong>Control group</strong>. Patients in the control group received the same medical management as the treatment group but did not receive stents.</p>
+<p>Researchers randomly assigned 224 patients to the treatment group and 227 to the control group. In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.</p>
+<p>This is an experiment and not an observational study. We will learn more about these ideas in this block.</p>
+<p>Researchers studied the effect of stents at two time points: 30 days after enrollment and 365 days after enrollment.</p>
 </div>
--->
-<!-- include=FALSE for PDF sending to CRC -->
-<p>This is the <a href="https://moderndive.com/">website</a> for <em>Statistical Inference via Data Science: A ModernDive into R and the Tidyverse</em>! Visit the <a href="https://github.com/moderndive/ModernDive_book">GitHub repository for this site</a> and find the book on <a href="https://www.amazon.com/Statistical-Inference-via-Data-Science/dp/0367409828/">Amazon</a>. You can also purchase it at <a href="https://www.routledge.com/Statistical-Inference-via-Data-Science-A-ModernDive-into-R-and-the-Tidyverse/Ismay-Kim/p/book/9780367409821?utm_source=author&amp;utm_medium=shared_link&amp;utm_campaign=B043134_jm1_5ll_6rm_t081_1al_statisticalinferenceviadatascienceauthorshare">CRC Press</a>.</p>
-<p></br>
-<img src="images/logos/book_cover.png" width="350" />
-</br></p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://chester.rbind.io/">Chester Ismay</a> and <a href="https://rudeboybert.rbind.io/">Albert Y. Kim</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-<!-- index.Rmd has to have some content in it or it won't create an index.html 
-file. Make sure to keep this in so that index.html is included. -->
+<div id="import-data" class="section level3 hasAnchor" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Import data<a href="8-CS1.html#import-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We begin our first use of <code>R</code>.</p>
+<p>If you need to install a package, most likely it will be on CRAN, the Comprehensive R Archive Network. Before a package can be used, it must be installed on the computer (once per computer or account) and loaded into a session (once per <code>R</code> session). When you exit <code>R</code>, the package stays installed on the computer but will not be reloaded when <code>R</code> is started again.</p>
+<p>In summary, <code>R</code> has packages that can be downloaded and installed from online repositories such as CRAN. When you install a package, which only needs to be done once per computer or account, in <code>R</code> all it is doing is placing the source code in a library folder designated during the installation of <code>R</code>. Packages are typically collections of functions and variables that are specific to a certain task or subject matter.</p>
+<p>For example, to install the <strong>mosaic</strong> package, enter:</p>
+<pre><code>install.packages(&quot;mosaic&quot;) # fetch package from CRAN</code></pre>
+<p>In RStudio, there is a <em>Packages</em> tab that makes it easy to add and maintain packages.</p>
+<p>To use a package in a session, we must load it. This makes it available to the current session only. When you start <code>R</code> again, you will have to load packages again. The command <code>library()</code> with the package name supplied as the argument is all that is needed. For this session, we will load <strong>tidyverse</strong> and <strong>mosaic</strong>. Note: the box below is executing the <code>R</code> commands, this is known as reproducible research since you can see the code and then you can run or modify as you need.</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="8-CS1.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>Next read in the data into the working environment.</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="8-CS1.html#cb271-1" aria-hidden="true" tabindex="-1"></a>stent_study <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/stent_study.csv&quot;</span>)</span></code></pre></div>
+<p>Let’s break this code down. We are reading from a .csv file and assigning the results into an object called <code>stent_study</code>. The assignment arrow <code>&lt;-</code> means we assign what is on the right to what is on the left. The <code>R</code> function we use in this case is <code>read_csv()</code>. When using <code>R</code> functions, you should ask yourself:</p>
+<ol style="list-style-type: decimal">
+<li><p>What do I want <code>R</code> to do?</p></li>
+<li><p>What information must I provide for <code>R</code> to do this?</p></li>
+</ol>
+<p>We want <code>R</code> to read in a .csv file. We can get help on this function by typing <code>?read_csv</code> or <code>help(read_csv)</code> at the prompt. The only required input to <code>read_csv()</code> is the file location. We have our data stored in a folder called “data” under the working directory. We can determine the working directory by typing <code>getwd()</code> at the prompt.</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="8-CS1.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<p>Similarly, if we wish to change the working directory, we can do so by using the <code>setwd()</code> function:</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="8-CS1.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&#39;C:/Users/Brianna.Hitt/Documents/ProbStat/Another Folder&#39;</span>)</span></code></pre></div>
+<p>In <code>R</code> if you use the <code>view()</code>, you will see the data in what looks like a standard spreadsheet.</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="8-CS1.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(stent_study)</span></code></pre></div>
+</div>
+<div id="explore-data" class="section level3 hasAnchor" number="8.2.4">
+<h3><span class="header-section-number">8.2.4</span> Explore data<a href="8-CS1.html#explore-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before we attempt to answer the research question, let’s look at the data. We want <code>R</code> to print out the first 10 rows of the data. The appropriate function is <code>head()</code> and it needs the data object. By default, <code>R</code> will output the first 6 rows. By using the <code>n =</code> argument, we can specify how many rows we want to view.</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="8-CS1.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(stent_study, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code># A tibble: 10 × 3
+   group   outcome30 outcome365
+   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;     
+ 1 control no_event  no_event  
+ 2 trmt    no_event  no_event  
+ 3 control no_event  no_event  
+ 4 trmt    no_event  no_event  
+ 5 trmt    no_event  no_event  
+ 6 control no_event  no_event  
+ 7 trmt    no_event  no_event  
+ 8 control no_event  no_event  
+ 9 control no_event  no_event  
+10 control no_event  no_event  </code></pre>
+<p>We also want to “glimpse” the data. The function is <code>glimpse()</code> and <code>R</code> needs the data object <code>stent_study</code>.</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="8-CS1.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(stent_study)</span></code></pre></div>
+<pre><code>Rows: 451
+Columns: 3
+$ group      &lt;chr&gt; &quot;control&quot;, &quot;trmt&quot;, &quot;control&quot;, &quot;trmt&quot;, &quot;trmt&quot;, &quot;control&quot;, &quot;t…
+$ outcome30  &lt;chr&gt; &quot;no_event&quot;, &quot;no_event&quot;, &quot;no_event&quot;, &quot;no_event&quot;, &quot;no_event&quot;,…
+$ outcome365 &lt;chr&gt; &quot;no_event&quot;, &quot;no_event&quot;, &quot;no_event&quot;, &quot;no_event&quot;, &quot;no_event&quot;,…</code></pre>
+<p>To keep things simple, we will only look at the <code>outcome30</code> variable in this case study. We will summarize the data in a table. We will learn to do this using the <strong>tidyverse</strong> package.</p>
+<p>We want to summarize the data by making a table. Using <code>tidyverse</code>, we would like to count the number of observations broken down by <code>group</code> and <code>outcome30</code>. The basic format is:</p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="8-CS1.html#cb279-1" aria-hidden="true" tabindex="-1"></a>stent_study <span class="sc">%&gt;%</span></span>
+<span id="cb279-2"><a href="8-CS1.html#cb279-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group,outcome30)<span class="sc">%&gt;%</span></span>
+<span id="cb279-3"><a href="8-CS1.html#cb279-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total=</span><span class="fu">n</span>())</span></code></pre></div>
+<pre><code># A tibble: 4 × 3
+# Groups:   group [2]
+  group   outcome30 total
+  &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;
+1 control no_event    214
+2 control stroke       13
+3 trmt    no_event    191
+4 trmt    stroke       33</code></pre>
+<p>Of the 224 patients in the treatment group, 33 had a stroke by the end of the first month. Using these two numbers, we can use <code>R</code> to compute the proportion of patients in the treatment group who had a stroke by the end of their first month.</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="8-CS1.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="dv">33</span> <span class="sc">/</span> (<span class="dv">33</span> <span class="sc">+</span> <span class="dv">191</span>)</span></code></pre></div>
+<pre><code>[1] 0.1473214</code></pre>
+<p>Let’s have <code>R</code> calculate proportions for us. Starting with the table above, we want to divide each count by the total, broken down by group. So, we need to group by the <code>group</code> variable and divide:</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="8-CS1.html#cb283-1" aria-hidden="true" tabindex="-1"></a>stent_study <span class="sc">%&gt;%</span></span>
+<span id="cb283-2"><a href="8-CS1.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group,outcome30)<span class="sc">%&gt;%</span></span>
+<span id="cb283-3"><a href="8-CS1.html#cb283-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total=</span><span class="fu">n</span>())<span class="sc">%&gt;%</span></span>
+<span id="cb283-4"><a href="8-CS1.html#cb283-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group)<span class="sc">%&gt;%</span></span>
+<span id="cb283-5"><a href="8-CS1.html#cb283-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> total<span class="sc">/</span><span class="fu">sum</span>(total))</span></code></pre></div>
+<pre><code># A tibble: 4 × 4
+# Groups:   group [2]
+  group   outcome30 total   prop
+  &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;
+1 control no_event    214 0.943 
+2 control stroke       13 0.0573
+3 trmt    no_event    191 0.853 
+4 trmt    stroke       33 0.147 </code></pre>
+<p>These tables present summary statistics. A <strong>summary statistic</strong> is a single number summarizing a large amount of data.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> For instance, the primary results of the study after 1 month could be described by two summary statistics: the proportion of people who had a stroke in the treatment group and the proportion of people who had a stroke in the control group.</p>
+<ul>
+<li><p>Proportion who had a stroke in the treatment (stent) group: <span class="math inline">\(33/224 = 0.15 = 15\%\)</span></p></li>
+<li><p>Proportion who had a stroke in the control group: <span class="math inline">\(13/227 = 0.06 = 6\%\)</span></p></li>
+</ul>
+</div>
+<div id="visualize-the-data" class="section level3 hasAnchor" number="8.2.5">
+<h3><span class="header-section-number">8.2.5</span> Visualize the data<a href="8-CS1.html#visualize-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is often important to visualize the data. The table is a type of visualization, but in this section we will introduce a graphical method called bar charts.</p>
+<p>We will use the <strong>ggplot2</strong> package to visualize the data. This package is becoming the industry standard for generating professional graphics. The interface for <strong>ggplot2</strong> can seem difficult at first, but we will ease into it. The <strong>ggplot2</strong> package was loaded when we loaded <code>tidyverse</code>.</p>
+<p>To generate a basic graphic, we need to ask ourselves what information we are trying to see, what particular type of graph is best, what corresponding <code>R</code> function to use, and what information that <code>R</code> function needs in order to build a plot. For categorical data, we want a bar chart and the <code>ggplot2</code> function <code>geom_bar()</code>. Inside the <code>aes()</code> argument, we will specify our variable(s) of interest.</p>
+<p>Here is our first attempt. In Figure <a href="8-CS1.html#fig:first-fig">8.1</a>, we leave the <code>y</code> portion of our formula blank. Doing this implies that we simply want to view the number/count of <code>outcome30</code> by type. We will see the two levels of <code>outcome30</code> on the x-axis and counts on the y-axis.</p>
+
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="8-CS1.html#cb285-1" aria-hidden="true" tabindex="-1"></a>stent_study<span class="sc">%&gt;%</span></span>
+<span id="cb285-2"><a href="8-CS1.html#cb285-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>outcome30))<span class="sc">+</span></span>
+<span id="cb285-3"><a href="8-CS1.html#cb285-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:first-fig"></span>
+<img src="ModernDive_files/figure-html/first-fig-1.png" alt="Using ggplot2 to create a bar chart." width="\textwidth" />
+<p class="caption">
+FIGURE 8.1: Using <strong>ggplot2</strong> to create a bar chart.
+</p>
+</div>
+<blockquote>
+<p><strong>Exercise</strong>:<br />
+Explain Figure <a href="8-CS1.html#fig:first-fig">8.1</a>.</p>
+</blockquote>
+<p>This plot graphically shows us the total number of “stroke” and the total number of “no_event”. However, this is not what we want. We want to compare the 30-day outcomes for both treatment groups. So, we need to break the data into different groups based on treatment type. In <code>ggplot</code> this means “faceting” your plot:</p>
+
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="8-CS1.html#cb286-1" aria-hidden="true" tabindex="-1"></a>stent_study<span class="sc">%&gt;%</span></span>
+<span id="cb286-2"><a href="8-CS1.html#cb286-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>outcome30))<span class="sc">+</span></span>
+<span id="cb286-3"><a href="8-CS1.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb286-4"><a href="8-CS1.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>group)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:split-fig"></span>
+<img src="ModernDive_files/figure-html/split-fig-1.png" alt="Bar charts conditioned on the group variable." width="\textwidth" />
+<p class="caption">
+FIGURE 8.2: Bar charts conditioned on the <code>group</code> variable.
+</p>
+</div>
+<div id="more-advanced-graphics" class="section level4 hasAnchor" number="8.2.5.1">
+<h4><span class="header-section-number">8.2.5.1</span> More advanced graphics<a href="8-CS1.html#more-advanced-graphics" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As a prelude for things to come, the above graphic needs work. The labels don’t help and there is no title. We could add color. Does it make more sense to use proportions? Here is the code and results for a better graph, see Figure <a href="8-CS1.html#fig:cs1-fig">8.3</a>. Don’t worry if this seems a bit advanced, but feel free to examine each new component of this code.</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="8-CS1.html#cb287-1" aria-hidden="true" tabindex="-1"></a>stent_study<span class="sc">%&gt;%</span></span>
+<span id="cb287-2"><a href="8-CS1.html#cb287-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>group,<span class="at">fill=</span>outcome30))<span class="sc">+</span></span>
+<span id="cb287-3"><a href="8-CS1.html#cb287-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>)<span class="sc">+</span></span>
+<span id="cb287-4"><a href="8-CS1.html#cb287-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Impact of Stents on Stroke&quot;</span>,</span>
+<span id="cb287-5"><a href="8-CS1.html#cb287-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Experiment with 451 Patients&quot;</span>,</span>
+<span id="cb287-6"><a href="8-CS1.html#cb287-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Experimental Group&quot;</span>,</span>
+<span id="cb287-7"><a href="8-CS1.html#cb287-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Number of Events&quot;</span>)<span class="sc">+</span></span>
+<span id="cb287-8"><a href="8-CS1.html#cb287-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cs1-fig"></span>
+<img src="ModernDive_files/figure-html/cs1-fig-1.png" alt="Better graph." width="\textwidth" />
+<p class="caption">
+FIGURE 8.3: Better graph.
+</p>
+</div>
+<p>Notice throughout the above, we used the pipe operator, <code>%&gt;%</code>. This operator allows us to string functions together in a manner that makes it easier to read the code. In the above code, we are sending the data object <code>stent_study</code> into the function <code>gf_props()</code> to use as data, so we don’t need the <code>data =</code> argument. In math, this is a composition of functions. Instead of <code>f(g(x))</code> we could use a pipe <code>f(g(x)) = g(x) %&gt;% f()</code>.</p>
+</div>
+</div>
+<div id="conclusion" class="section level3 hasAnchor" number="8.2.6">
+<h3><span class="header-section-number">8.2.6</span> Conclusion<a href="8-CS1.html#conclusion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>These two summary statistics (the proportions of people who had a stroke) are useful in looking for differences in the groups, and we are in for a surprise: an additional 9% of patients in the treatment group had a stroke! This is important for two reasons. First, it is contrary to what doctors expected, which was that stents would <em>reduce</em> the rate of strokes. Second, it leads to a statistical question: do the data show a real difference due to the treatment?</p>
+<p>This second question is subtle. Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50%, we probably won’t observe exactly 50 heads. This type of fluctuation is part of almost any type of data generating process. It is possible that the 9% difference in the stent study is due to this natural variation. However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance. So what we are really asking is the following: is the difference so large that we should reject the notion that it was due to chance?</p>
+<p>This is a preview of inferential statistics, a subsequent section of this text. While we haven’t yet covered statistical tools to fully address these steps, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.</p>
+<p><strong>Be careful:</strong> do not generalize the results of this study to all patients and all stents. This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients. In addition, there are many types of stents and this study only considered the self-expanding Wingspan stent (Boston Scientific). However, this study does leave us with an important lesson: we should keep our eyes open for surprises.</p>
+</div>
+</div>
+<div id="homework-problems-7" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Homework Problems<a href="8-CS1.html#homework-problems-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><strong>Stent study continued</strong>. Complete a similar analysis for the stent data, but this time use the one year outcome. In particular,</li>
+</ol>
+<!-- -->
+<ol style="list-style-type: lower-alpha">
+<li>Read the data into your working directory.</li>
+</ol>
+<pre><code>stent_study &lt;- read_csv(___)</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Complete the steps below. The start of code is provided below. You will need to add <code>{r}</code> to the start of each code chunk or insert your own code chunks to use the code.</li>
+</ol>
+<pre><code>i. Use `glimpse()` on the data.  </code></pre>
+<pre><code>glimpse(___)</code></pre>
+<pre><code>ii. Create a table of `outcome365` and `group`. Comment on the results.  </code></pre>
+<pre><code>stent_study %&gt;%
+  group_by(group,_________)%&gt;%
+  summarize(total=n())</code></pre>
+<pre><code>iii. Create a barchart of the data.  </code></pre>
+<pre><code>stent_study%&gt;%
+  ggplot(aes(x = _________, fill = ________))+
+  geom_bar(position = &quot;fill&quot;)+
+  labs(title = &quot;__________&quot;,
+       subtitle = &quot;__________&quot;,
+       x = &quot;__________&quot;,
+       y = &quot;__________&quot;)
+</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p><strong>Migraine and acupuncture</strong>. A migraine is a particularly painful type of headache, which patients sometimes wish to treat with acupuncture. To determine whether acupuncture relieves migraine pain, researchers conducted a randomized controlled study where 89 females diagnosed with migraine headaches were randomly assigned to one of two groups: treatment or control. The 43 patients in the treatment group received acupuncture that is specifically designed to treat migraines. The 46 patients in the control group received placebo acupuncture (needle insertion at nonacupoint locations). Then 24 hours after patients received acupuncture, they were asked if they were pain free.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
+<p>The data is in the file <code>migraine_study.csv</code> in the <code>data</code> folder. Complete the following work:</p></li>
+</ol>
+<!-- -->
+<ol style="list-style-type: lower-alpha">
+<li>Read the data into an object called <code>migraine_study</code>.</li>
+</ol>
+<pre><code>migraine_study &lt;- read_csv(&quot;data/___&quot;)</code></pre>
+<pre><code>head(migraine_study)</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Create a table of the data.</p></li>
+<li><p>Report the percent of patients in the treatment group who were pain free 24 hours after receiving acupuncture.</p></li>
+<li><p>Repeat for the control group.</p></li>
+<li><p>At first glance, does acupuncture appear to be an effective treatment for migraines? Explain your reasoning.</p></li>
+<li><p>Do the data provide convincing evidence that there is a real pain reduction for those patients in the treatment group? Or do you think that the observed difference might just be due to chance?</p></li>
+</ol>
+<!-- -->
+</div>
+<div id="solutions-manual-7" class="section level2 unnumbered hasAnchor">
+<h2><a href="https://ds-usafa.github.io/PSSE-Solutions-Manual/CS1.html">Solutions Manual</a><a href="8-CS1.html#solutions-manual-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="6">
+<li id="fn6"><p>Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003.<a href="8-CS1.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>NY Times article reporting on the study: <a href="http://www.nytimes.com/2011/09/08/health/research/08stent.html" class="uri">http://www.nytimes.com/2011/09/08/health/research/08stent.html</a><a href="8-CS1.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>Formally, a summary statistic is a value computed from the data. Some summary statistics are more useful than others.<a href="8-CS1.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>G. Allais et al. “Ear acupuncture in the treatment of migraine attacks: a randomized trial on the efficacy of appropriate versus inappropriate acupoints”. <a href="http://www.ncbi.nlm.nih.gov/pubmed/21533739" class="uri">http://www.ncbi.nlm.nih.gov/pubmed/21533739</a> In: Neurological Sci. 32.1 (2011), pp. 173–175.<a href="8-CS1.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="foreword.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="7-CONTNNAMED.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="9-DB.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -740,7 +947,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/moderndive/moderndive_book/edit/master/index.Rmd",
+"link": "https://github.com/moderndive/moderndive_book/edit/master/PSSE_additions/01-Data-Case-Study.Rmd",
 "text": "Edit"
 },
 "history": {

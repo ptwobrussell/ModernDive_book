@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Statistical Inference via Data Science</title>
+  <title>Chapter 10 Overview of Data Collection Principles | Statistical Inference via Data Science</title>
   <meta name="description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Statistical Inference via Data Science" />
+  <meta property="og:title" content="Chapter 10 Overview of Data Collection Principles | Statistical Inference via Data Science" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://moderndive.com//images/logos/book_cover.png" />
   <meta property="og:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="github-repo" content="moderndive/ModernDive_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Statistical Inference via Data Science" />
+  <meta name="twitter:title" content="Chapter 10 Overview of Data Collection Principles | Statistical Inference via Data Science" />
   <meta name="twitter:site" content="@ModernDive" />
   <meta name="twitter:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="twitter:image" content="https://moderndive.com//images/logos/book_cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/logos/favicons/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/logos/favicons/favicon.ico" type="image/x-icon" />
-
-<link rel="next" href="foreword.html"/>
+<link rel="prev" href="9-DB.html"/>
+<link rel="next" href="11-STUDY.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -669,47 +669,170 @@ div.csl-indent {
 <html>
 <img src='https://moderndive.com/wide_format.png' alt="ModernDive">
 </html>
-<div id="header">
-<h1 class="title">Statistical Inference via Data Science</h1>
-<h2 class="subtitle"><em>A ModernDive into R and the Tidyverse</em></h2>
-<p class="author"><em>Chester Ismay and Albert Y. Kim <br> Foreword by Kelly S. McConville</em></p>
-<p class="date"><em>December 05, 2023</em></p>
+<div id="ODCP" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Overview of Data Collection Principles<a href="10-ODCP.html#ODCP" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="overview-of-data-collection-principles" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Overview of data collection principles<a href="10-ODCP.html#overview-of-data-collection-principles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the last chapter, we briefly introduced data and some language around it. In short, data often are presented in <em>data frames</em>, where <em>cases</em> or <em>observational units</em> are presented in rows, and <em>variables</em> are presented in columns. Too often, much attention is given to analysis of existing data, but not enough attention is given to where the data came from, why it was collected, and what research question are we addressing. Over the next two chapters, we will introduce some data collection principles and some various types of random sampling.</p>
+<p>The first step in conducting research is to identify topics or questions that are to be investigated. A clearly laid out research question is helpful in identifying what subjects or cases should be studied and what variables are important. It is also important to consider <em>how</em> data are collected so that they are reliable and help achieve the research goals.</p>
+<div id="populations-and-samples" class="section level3 hasAnchor" number="10.1.1">
+<h3><span class="header-section-number">10.1.1</span> Populations and samples<a href="10-ODCP.html#populations-and-samples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider the following three research questions:</p>
+<ol style="list-style-type: decimal">
+<li>What is the average mercury content in swordfish in the Atlantic Ocean?<br />
+</li>
+<li>Over the last 5 years, what is the average time to complete a degree for Duke undergraduate students?<br />
+</li>
+<li>Does a new drug reduce the number of deaths in patients with severe heart disease?</li>
+</ol>
+<p>Each research question refers to a target <strong>population</strong>, the entire collection of individuals about which we want information. In the first question, the target population is all swordfish in the Atlantic Ocean, and each fish represents a case. It is usually too expensive to collect data for every case in a population. Instead, a sample is taken. A <strong>sample</strong> represents a subset of the cases and is often a small fraction of the population. For instance, 60 swordfish (or some other number) in the population might be selected, and this sample data may be used to provide an estimate of the population average and answer the research question.</p>
+<blockquote>
+<p><strong>Exercise</strong>:<br />
+For the second and third questions above, identify the target population and what represents an individual case.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></p>
+</blockquote>
 </div>
-<div id="welcome-to-moderndive" class="section level1 unnumbered hasAnchor">
-<h1>Welcome to ModernDive<a href="index.html#welcome-to-moderndive" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<!-- purl() all the chapter Rmd's in a new session -->
-<!--
-<div class="announcement">
-<p><strong>This is a previous version (v<code>r version</code>) of
-<em>ModernDive</em> and may be out of date. For the current version of
-<em>ModernDive</em>, please go to <a
-href="https://moderndive.com/">ModernDive.com</a>.</strong></p>
+<div id="anecdotal-evidence" class="section level3 hasAnchor" number="10.1.2">
+<h3><span class="header-section-number">10.1.2</span> Anecdotal evidence<a href="10-ODCP.html#anecdotal-evidence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider the following possible responses to the three research questions:</p>
+<ol style="list-style-type: decimal">
+<li>A man on the news got mercury poisoning from eating swordfish, so the average mercury concentration in swordfish must be dangerously high.</li>
+<li>I met two students who took more than 7 years to graduate from Duke, so it must take longer to graduate at Duke than at many other colleges.</li>
+<li>My friend’s dad had a heart attack and died after they gave him a new heart disease drug, so the drug must not work.</li>
+</ol>
+<p>Each conclusion is based on data. However, there are two problems. First, the data only represent one or two cases. Second, and more importantly, it is unclear whether these cases are actually representative of the population. Data collected in this haphazard fashion are called <strong>anecdotal evidence</strong>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-124"></span>
+<img src="figures/mnWinter.JPG" alt="In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, ‘It’s one storm, in one region, of one country.’" width="\textwidth" />
+<p class="caption">
+FIGURE 10.1: In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, <em>‘It’s one storm, in one region, of one country.’</em>
+</p>
 </div>
--->
-<!--
-<div class="learncheck">
-<p><strong>Please note that you are currently looking at a preview of a
-future version of <em>ModernDive</em>, which is currently being edited.
-For the current version of <em>ModernDive</em>, please visit <a
-href="https://moderndive.com/">ModernDive.com</a>.</strong></p>
+<blockquote>
+<p><strong>Anecdotal evidence</strong>:
+Be careful of data collected haphazardly. Such evidence may be true and verifiable, but it may only represent extraordinary cases.</p>
+</blockquote>
+<p>Anecdotal evidence typically is composed of unusual cases that we recall based on their striking characteristics. For instance, we are more likely to remember the two people we met who took 7 years to graduate than the six others who graduated in four years. Instead of looking at the most unusual cases, we should examine a sample of many cases that represent the population.</p>
 </div>
--->
-<!-- include=FALSE for PDF sending to CRC -->
-<p>This is the <a href="https://moderndive.com/">website</a> for <em>Statistical Inference via Data Science: A ModernDive into R and the Tidyverse</em>! Visit the <a href="https://github.com/moderndive/ModernDive_book">GitHub repository for this site</a> and find the book on <a href="https://www.amazon.com/Statistical-Inference-via-Data-Science/dp/0367409828/">Amazon</a>. You can also purchase it at <a href="https://www.routledge.com/Statistical-Inference-via-Data-Science-A-ModernDive-into-R-and-the-Tidyverse/Ismay-Kim/p/book/9780367409821?utm_source=author&amp;utm_medium=shared_link&amp;utm_campaign=B043134_jm1_5ll_6rm_t081_1al_statisticalinferenceviadatascienceauthorshare">CRC Press</a>.</p>
-<p></br>
-<img src="images/logos/book_cover.png" width="350" />
-</br></p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://chester.rbind.io/">Chester Ismay</a> and <a href="https://rudeboybert.rbind.io/">Albert Y. Kim</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-<!-- index.Rmd has to have some content in it or it won't create an index.html 
-file. Make sure to keep this in so that index.html is included. -->
+<div id="sampling-from-a-population" class="section level3 hasAnchor" number="10.1.3">
+<h3><span class="header-section-number">10.1.3</span> Sampling from a population<a href="10-ODCP.html#sampling-from-a-population" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We might try to estimate the time to graduation for Duke undergraduates in the last 5 years by collecting a sample of students. All graduates in the last 5 years represent the <em>population</em>, and graduates who are selected for review are collectively called the <em>sample</em>. In general, we always seek to <em>randomly</em> select a sample from a population. The most basic type of random selection is equivalent to how raffles are conducted. For example, in selecting graduates, we could write each graduate’s name on a raffle ticket and draw 100 tickets. The selected names would represent a random sample of 100 graduates. This is illustrated in Figure <a href="10-ODCP.html#fig:randsamp-fig">10.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:randsamp-fig"></span>
+<img src="ModernDive_files/figure-html/randsamp-fig-1.png" alt="In this graphic, five graduates are randomly selected from the population to be included in the sample." width="\textwidth" />
+<p class="caption">
+FIGURE 10.2: In this graphic, five graduates are randomly selected from the population to be included in the sample.
+</p>
+</div>
+<p>Why pick a sample randomly? Why not just pick a sample by hand? Consider the following scenario.</p>
+<blockquote>
+<p><strong>Example</strong>:<br />
+Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study. What kind of students do you think she might collect? Do you think her sample would be representative of all graduates?
+<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
+</blockquote>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:biased-fig"></span>
+<img src="ModernDive_files/figure-html/biased-fig-1.png" alt="Instead of sampling from all graduates equally, a nutrition major might inadvertently pick graduates with health-related majors disproportionately often." width="\textwidth" />
+<p class="caption">
+FIGURE 10.3: Instead of sampling from all graduates equally, a nutrition major might inadvertently pick graduates with health-related majors disproportionately often.
+</p>
+</div>
+<p>If someone was permitted to pick and choose exactly which graduates were included in the sample, it is entirely possible that the sample could be skewed to that person’s interests, which may be entirely unintentional. This introduces <strong>sampling bias</strong> (see Figure <a href="10-ODCP.html#fig:biased-fig">10.3</a>), where some individuals in the population are more likely to be sampled than others. Sampling randomly helps resolve this problem. The most basic random sample is called a <strong>simple random sample</strong>, which is equivalent to using a raffle to select cases. This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample.</p>
+<p>Sometimes a simple random sample is difficult to implement and an alternative method is helpful. One such substitute is a <strong>systematic sample</strong>, where one case is sampled after letting a fixed number of others, say 10 other cases, pass by. Since this approach uses a mechanism that is not easily subject to personal biases, it often yields a reasonably representative sample. This book will focus on simple random samples since the use of systematic samples is uncommon and requires additional considerations of the context.</p>
+<p>The act of taking a simple random sample helps minimize bias. However, bias can crop up in other ways. Even when people are picked at random, e.g. for surveys, caution must be exercised if the non-response is high. For instance, if only 30% of the people randomly sampled for a survey actually respond, and it is unclear whether the respondents are <strong>representative</strong><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> of the entire population, the survey might suffer from <strong>non-response bias</strong><a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:convsamp-fig"></span>
+<img src="ModernDive_files/figure-html/convsamp-fig-1.png" alt="Due to the possibility of non-response, surveys studies may only reach a certain group within the population. It is difficult, and often impossible, to completely fix this problem" width="\textwidth" />
+<p class="caption">
+FIGURE 10.4: Due to the possibility of non-response, surveys studies may only reach a certain group within the population. It is difficult, and often impossible, to completely fix this problem
+</p>
+</div>
+<p>Another common pitfall is a <strong>convenience sample</strong>, where individuals who are easily accessible are more likely to be included in the sample, see Figure <a href="10-ODCP.html#fig:convsamp-fig">10.4</a> . For instance, if a political survey is done by stopping people walking in the Bronx, it will not represent all of New York City. It is often difficult to discern what sub-population a convenience sample represents.</p>
+<blockquote>
+<p><strong>Exercise</strong>:<br />
+We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product?<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a></p>
+</blockquote>
+</div>
+<div id="explanatory-and-response-variables" class="section level3 hasAnchor" number="10.1.4">
+<h3><span class="header-section-number">10.1.4</span> Explanatory and response variables<a href="10-ODCP.html#explanatory-and-response-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider the following question for the <code>county</code> data set:</p>
+<p>Is federal spending, on average, higher or lower in counties with high rates of poverty?</p>
+<p>If we suspect poverty might affect spending in a county, then poverty is the <strong>explanatory</strong> variable and federal spending is the <strong>response</strong> variable in the relationship.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a> If there are many variables, it may be possible to consider a number of them as explanatory variables.</p>
+<blockquote>
+<p><strong>Explanatory</strong> and <strong>response</strong> variables<br />
+To identify the explanatory variable in a pair of variables, identify which of the two variables is suspected as explaining or causing changes in the other. In data sets with more than two variables, it is possible to have multiple explanatory variables. The response variable is the outcome or result of interest.</p>
+</blockquote>
+<blockquote>
+<p><strong>Caution</strong>:
+Association does not imply causation. Labeling variables as <em>explanatory</em> and <em>response</em> does not guarantee the relationship between the two is actually causal, even if there is an association identified between the two variables. We use these labels only to keep track of which variable we suspect affects the other. We also use this language to help in our use of <code>R</code> and the formula notation.</p>
+</blockquote>
+<p>In some cases, there is no explanatory or response variable. Consider the following question:</p>
+<p>If homeownership in a particular county is lower than the national average, will the percent of multi-unit structures in that county likely be above or below the national average?</p>
+<p>It is difficult to decide which of these variables should be considered the explanatory and response variable; i.e. the direction is ambiguous, so no explanatory or response labels are suggested here.</p>
+</div>
+<div id="introducing-observational-studies-and-experiments" class="section level3 hasAnchor" number="10.1.5">
+<h3><span class="header-section-number">10.1.5</span> Introducing observational studies and experiments<a href="10-ODCP.html#introducing-observational-studies-and-experiments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are two primary types of data collection: observational studies and experiments.</p>
+<p>Researchers perform an <strong>observational study</strong> when they collect data in a way that does not directly interfere with how the data arise. For instance, researchers may collect information via surveys, review medical or company records, or follow a <strong>cohort</strong><a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> of many similar individuals to study why certain diseases might develop. In each of these situations, researchers merely observe what happens. In general, observational studies can provide evidence of a naturally occurring association between variables, but by themselves, they cannot show a causal connection.</p>
+<p>When researchers want to investigate the possibility of a causal connection, they conduct an <strong>experiment</strong>, a study in which the explanatory variables are assigned rather than observed. For instance, we may suspect administering a drug will reduce mortality in heart attack patients over the following year. To check if there really is a causal connection between the explanatory variable and the response, researchers will collect a sample of individuals and split them into groups. The individuals in each group are <em>assigned</em> a treatment. When individuals are <em>randomly</em> assigned to a treatment group, and we are <em>comparing</em> at least two treatments, the experiment is called a <strong>randomized comparative experiment</strong>. For example, each heart attack patient in the drug trial could be randomly assigned, perhaps by flipping a coin, into one of two groups: the first group receives a <strong>placebo</strong> (fake treatment) and the second group receives the drug. The case study at the beginning of the book is another example of an experiment, though that study did not employ a placebo. Math 359 is a course on the design and analysis of experimental data, DOE, at USAFA. In the Air Force, these types of experiments are an important part of test and evaluation. Many Air Force analysts are expert practitioners of DOE. In this book though, we will minimize our discussion of DOE.</p>
+<blockquote>
+<p><strong>Association <span class="math inline">\(\neq\)</span> Causation</strong><br />
+Again, association does not imply causation. In a data analysis, association does not imply causation, and causation can only be inferred from a randomized experiment. Although, a hot field is the analysis of causal relationships in observational data. This is important because consider cigarette smoking, how do we know it causes lung cancer? We only have observational data and clearly cannot do an experiment. We think analysts will be charged in the near future with using causal reasoning on observational data.</p>
+</blockquote>
+</div>
+</div>
+<div id="homework-problems-8" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Homework Problems<a href="10-ODCP.html#homework-problems-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><strong>Generalizability and causality</strong>. Identify the population of interest and the sample in the studies described below. These are the same studies from the previous chapter. Also comment on whether or not the results of the study can be generalized to the population and if the findings of the study can be used to establish causal relationships.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Researchers collected data to examine the relationship between pollutants and preterm births in Southern California. During the study, air pollution levels were measured by air quality monitoring stations. Specifically, levels of carbon monoxide were recorded in parts per million, nitrogen dioxide and ozone in parts per hundred million, and coarse particulate matter (PM<span class="math inline">\(_{10}\)</span>) in <span class="math inline">\(\mu g/m^3\)</span>. Length of gestation data were collected on 143,196 births between the years 1989 and 1993, and air pollution exposure during gestation was calculated for each birth. The analysis suggests that increased ambient PM<span class="math inline">\(_{10}\)</span> and, to a lesser degree, CO concentrations may be associated with the occurrence of preterm births.<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a></p></li>
+<li><p>The Buteyko method is a shallow breathing technique developed by Konstantin Buteyko, a Russian doctor, in 1952. Anecdotal evidence suggests that the Buteyko method can reduce asthma symptoms and improve quality of life. In a scientific study to determine the effectiveness of this method, researchers recruited 600 asthma patients aged 18-69 who relied on medication for asthma treatment. These patients were split into two research groups: patients who practiced the Buteyko method and those who did not. Patients were scored on quality of life, activity, asthma symptoms, and medication reduction on a scale from 0 to 10. On average, the participants in the Buteyko group experienced a significant reduction in asthma symptoms and an improvement in quality of life.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p></li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>GPA and study time</strong>. A survey was conducted on 193 undergraduates who took an introductory statistics course at a private US university in 2012. This survey asked them about their GPA and the number of hours they spent studying per week. The scatterplot below displays the relationship between these two variables.</li>
+</ol>
+<p><img src="ModernDive_files/figure-html/unnamed-chunk-125-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What is the explanatory variable and what is the response variable?</p></li>
+<li><p>Describe the relationship between the two variables. Make sure to discuss unusual observations, if any.</p></li>
+<li><p>Is this an experiment or an observational study?</p></li>
+<li><p>Can we conclude that studying longer hours leads to higher GPAs?</p></li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Income and education</strong> The scatterplot below shows the relationship between per capita income (in thousands of dollars) and percent of population with a bachelor’s degree in 3,143 counties in the US in 2010.</li>
+</ol>
+<p><img src="ModernDive_files/figure-html/unnamed-chunk-126-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What are the explanatory and response variables?</p></li>
+<li><p>Describe the relationship between the two variables. Make sure to discuss unusual observations, if any.</p></li>
+<li><p>Can we conclude that having a bachelor’s degree increases one’s income?</p></li>
+</ol>
+</div>
+<div id="solutions-manual-9" class="section level2 unnumbered hasAnchor">
+<h2><a href="https://ds-usafa.github.io/PSSE-Solutions-Manual/ODCP.html">Solutions Manual</a><a href="10-ODCP.html#solutions-manual-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="10">
+<li id="fn10"><p>2) Notice that the second question is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergraduate students who have graduated in the last five years represent cases in the population under consideration. Each such student would represent an individual case. 3) A person with severe heart disease represents a case. The population includes all people with severe heart disease.<a href="10-ODCP.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>Perhaps she would pick a disproportionate number of graduates from health-related fields. Or perhaps her selection would be well-representative of the population. When selecting samples by hand, we run the risk of picking a <em>biased</em> sample, even if that bias is unintentional or difficult to discern.<a href="10-ODCP.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>A representative sample accurately reflects the characteristics of the population.<a href="10-ODCP.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>Non-response bias is bias that can be introduced when subjects elect not to participate in a study. Often, the individuals that do participate are systematically different from the individuals who do not.<a href="10-ODCP.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p>Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. However, since our experiences may not be representative, we also keep an open mind.<a href="10-ODCP.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p>Sometimes the explanatory variable is called the <strong>independent</strong> variable and the response variable is called the <strong>dependent</strong> variable. However, this becomes confusing since a <em>pair</em> of variables might be independent or dependent, so be careful and consider the context when using or reading these words.<a href="10-ODCP.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p>A cohort is a group of individuals who are similar in some way.<a href="10-ODCP.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p>B. Ritz et al. <a href="http://journals.lww.com/epidem/Abstract/2000/09000/Effect_of_Air_Pollution_on_Preterm_Birth_Among.4.aspx">“Effect of air pollution on preterm birth among children born in Southern California
+between 1989 and 1993”</a>. In: Epidemiology 11.5 (2000), pp. 502–511.<a href="10-ODCP.html#fnref17" class="footnote-back">↩︎</a></p></li>
+<li id="fn18"><p>J. McGowan. “Health Education: Does the Buteyko Institute Method make a difference?” In: Thorax 58 (2003).<a href="10-ODCP.html#fnref18" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="foreword.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="9-DB.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="11-STUDY.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -740,7 +863,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/moderndive/moderndive_book/edit/master/index.Rmd",
+"link": "https://github.com/moderndive/moderndive_book/edit/master/PSSE_additions/03-Overview-of-Data-Collection-Principles.Rmd",
 "text": "Edit"
 },
 "history": {

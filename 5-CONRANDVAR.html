@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Statistical Inference via Data Science</title>
+  <title>Chapter 5 Continuous Random Variables | Statistical Inference via Data Science</title>
   <meta name="description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Statistical Inference via Data Science" />
+  <meta property="og:title" content="Chapter 5 Continuous Random Variables | Statistical Inference via Data Science" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://moderndive.com//images/logos/book_cover.png" />
   <meta property="og:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="github-repo" content="moderndive/ModernDive_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Statistical Inference via Data Science" />
+  <meta name="twitter:title" content="Chapter 5 Continuous Random Variables | Statistical Inference via Data Science" />
   <meta name="twitter:site" content="@ModernDive" />
   <meta name="twitter:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="twitter:image" content="https://moderndive.com//images/logos/book_cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/logos/favicons/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/logos/favicons/favicon.ico" type="image/x-icon" />
-
-<link rel="next" href="foreword.html"/>
+<link rel="prev" href="4-RANDVAR.html"/>
+<link rel="next" href="6-DISCRETENAMED.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -669,47 +669,239 @@ div.csl-indent {
 <html>
 <img src='https://moderndive.com/wide_format.png' alt="ModernDive">
 </html>
-<div id="header">
-<h1 class="title">Statistical Inference via Data Science</h1>
-<h2 class="subtitle"><em>A ModernDive into R and the Tidyverse</em></h2>
-<p class="author"><em>Chester Ismay and Albert Y. Kim <br> Foreword by Kelly S. McConville</em></p>
-<p class="date"><em>December 05, 2023</em></p>
+<div id="CONRANDVAR" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Continuous Random Variables<a href="5-CONRANDVAR.html#CONRANDVAR" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="objectives-4" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Objectives<a href="5-CONRANDVAR.html#objectives-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Define and properly use in context all new terminology, to include: <em>probability density function (pdf)</em> and <em>cumulative distribution function (cdf)</em> for continuous random variables.</p></li>
+<li><p>Given a continuous random variable, find probabilities using the pdf and/or the cdf.</p></li>
+<li><p>Find the mean and variance of a continuous random variable.</p></li>
+</ol>
 </div>
-<div id="welcome-to-moderndive" class="section level1 unnumbered hasAnchor">
-<h1>Welcome to ModernDive<a href="index.html#welcome-to-moderndive" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<!-- purl() all the chapter Rmd's in a new session -->
-<!--
-<div class="announcement">
-<p><strong>This is a previous version (v<code>r version</code>) of
-<em>ModernDive</em> and may be out of date. For the current version of
-<em>ModernDive</em>, please go to <a
-href="https://moderndive.com/">ModernDive.com</a>.</strong></p>
+<div id="continuous-random-variables" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Continuous random variables<a href="5-CONRANDVAR.html#continuous-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the last chapter, we introduced random variables, and explored discrete random variables. In this chapter, we will move into continuous random variables, their properties, their distribution functions, and how they differ from discrete random variables.</p>
+<p>Recall that a continuous random variable has a domain that is a continuous interval (or possibly a group of intervals). For example, let <span class="math inline">\(Y\)</span> be the random variable corresponding to the height of a randomly selected individual. While our measurement will necessitate “discretizing” height to some degree, technically, height is a continuous random variable since a person could measure 67.3 inches or 67.4 inches or anything in between.</p>
+<div id="continuous-distribution-functions" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Continuous distribution functions<a href="5-CONRANDVAR.html#continuous-distribution-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>So how do we describe the randomness of continuous random variables? In the case of discrete random variables, the probability mass function (pmf) and the cumulative distribution function (cdf) are used to describe randomness. However, recall that the pmf is a function that returns the probability that the random variable takes the inputted value. Due to the nature of continuous random variables, the probability that a continuous random variable takes on any one individual value is technically 0. Thus, a pmf cannot apply to a continuous random variable.</p>
+<p>Rather, we describe the randomness of continuous random variables with the <em>probability density function</em> (pdf) and the <em>cumulative distribution function</em> (cdf). Note that the cdf has the same interpretation and application as in the discrete case.</p>
+<div style="page-break-after: always;"></div>
 </div>
--->
-<!--
-<div class="learncheck">
-<p><strong>Please note that you are currently looking at a preview of a
-future version of <em>ModernDive</em>, which is currently being edited.
-For the current version of <em>ModernDive</em>, please visit <a
-href="https://moderndive.com/">ModernDive.com</a>.</strong></p>
+<div id="probability-density-function" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Probability density function<a href="5-CONRANDVAR.html#probability-density-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let <span class="math inline">\(X\)</span> be a continuous random variable. The probability density function (pdf) of <span class="math inline">\(X\)</span>, given by <span class="math inline">\(f_X(x)\)</span> is a function that describes the behavior of <span class="math inline">\(X\)</span>. It is important to note that in the continuous case, <span class="math inline">\(f_X(x)\neq \mbox{P}(X=x)\)</span>, as the probability of <span class="math inline">\(X\)</span> taking any one individual value is 0.</p>
+<p>The pdf is a <em>function</em>. The input of a pdf is any real number. The output is known as the density. The pdf has three main properties:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(f_X(x)\geq 0\)</span></p></li>
+<li><p><span class="math inline">\(\int_{S_X} f_X(x)\mathop{}\!\mathrm{d}x = 1\)</span></p></li>
+<li><p><span class="math inline">\(\mbox{P}(X\in A)=\int_{x\in A} f_X(x)\mathop{}\!\mathrm{d}x\)</span> or another way to write this <span class="math inline">\(\mbox{P}(a \leq X \leq b)=\int_{a}^{b} f_X(x)\mathop{}\!\mathrm{d}x\)</span></p></li>
+</ol>
+<p>Properties 2) and 3) imply that the area underneath a pdf represents probability. The pdf is a non-negative function, it cannot have negative values.</p>
 </div>
--->
-<!-- include=FALSE for PDF sending to CRC -->
-<p>This is the <a href="https://moderndive.com/">website</a> for <em>Statistical Inference via Data Science: A ModernDive into R and the Tidyverse</em>! Visit the <a href="https://github.com/moderndive/ModernDive_book">GitHub repository for this site</a> and find the book on <a href="https://www.amazon.com/Statistical-Inference-via-Data-Science/dp/0367409828/">Amazon</a>. You can also purchase it at <a href="https://www.routledge.com/Statistical-Inference-via-Data-Science-A-ModernDive-into-R-and-the-Tidyverse/Ismay-Kim/p/book/9780367409821?utm_source=author&amp;utm_medium=shared_link&amp;utm_campaign=B043134_jm1_5ll_6rm_t081_1al_statisticalinferenceviadatascienceauthorshare">CRC Press</a>.</p>
-<p></br>
-<img src="images/logos/book_cover.png" width="350" />
-</br></p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://chester.rbind.io/">Chester Ismay</a> and <a href="https://rudeboybert.rbind.io/">Albert Y. Kim</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-<!-- index.Rmd has to have some content in it or it won't create an index.html 
-file. Make sure to keep this in so that index.html is included. -->
+<div id="cumulative-distribution-function-1" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Cumulative distribution function<a href="5-CONRANDVAR.html#cumulative-distribution-function-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The cumulative distribution function (cdf) of a continuous random variable has the same interpretation as it does for a discrete random variable. It is a <em>function</em>. The input of a cdf is any real number, and the output is the probability that the random variable takes a value less than or equal to the inputted value. It is denoted as <span class="math inline">\(F\)</span> and is given by:
+<span class="math display">\[
+F_X(x)=\mbox{P}(X\leq x)=\int_{-\infty}^x f_x(t) \mathop{}\!\mathrm{d}t
+\]</span></p>
+<blockquote>
+<p><em>Example</em>:<br />
+Let <span class="math inline">\(X\)</span> be a continuous random variable with <span class="math inline">\(f_X(x)=2x\)</span> where <span class="math inline">\(0 \leq x \leq 1\)</span>. Verify that <span class="math inline">\(f\)</span> is a valid pdf. Find the cdf of <span class="math inline">\(X\)</span>. Also, find the following probabilities: <span class="math inline">\(\mbox{P}(X&lt;0.5)\)</span>, <span class="math inline">\(\mbox{P}(X&gt;0.5)\)</span>, and <span class="math inline">\(\mbox{P}(0.1\leq X &lt; 0.75)\)</span>. Finally, find the median of <span class="math inline">\(X\)</span>.</p>
+</blockquote>
+<p>To verify that <span class="math inline">\(f\)</span> is a valid pdf, we simply note that <span class="math inline">\(f_X(x) \geq 0\)</span> on the range <span class="math inline">\(0 \leq x \leq 1\)</span>. Also, we note that <span class="math inline">\(\int_0^1 2x \mathop{}\!\mathrm{d}x = x^2\bigg|_0^1 = 1\)</span>.</p>
+<p>Using <code>R</code>, we find</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="5-CONRANDVAR.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)<span class="dv">2</span><span class="sc">*</span>x, <span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>1 with absolute error &lt; 1.1e-14</code></pre>
+<p>Or we can use the <strong>mosaicCalc</strong> package to find the anti-derivative. If the package is not installed, you can use the <code>Packages</code> tab in <code>RStudio</code> or type <code>install.packages("mosaicCalc")</code> at the command prompt. Load the library.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="5-CONRANDVAR.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaicCalc)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="5-CONRANDVAR.html#cb146-1" aria-hidden="true" tabindex="-1"></a>(Fx <span class="ot">&lt;-</span> <span class="fu">antiD</span>(<span class="dv">2</span><span class="sc">*</span>x <span class="sc">~</span> x))</span></code></pre></div>
+<pre><code>function (x, C = 0) 
+x^2 + C</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="5-CONRANDVAR.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Fx</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">Fx</span>(<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>[1] 1</code></pre>
+Graphically, the pdf is displayed in Figure <a href="5-CONRANDVAR.html#fig:plot111-fig">5.1</a>:
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot111-fig"></span>
+<img src="ModernDive_files/figure-html/plot111-fig-1.png" alt="pdf of $X$" width="\textwidth" />
+<p class="caption">
+FIGURE 5.1: pdf of <span class="math inline">\(X\)</span>
+</p>
+</div>
+<div style="page-break-after: always;"></div>
+<p>The cdf of <span class="math inline">\(X\)</span> is found by
+<span class="math display">\[
+\int_0^x 2t \mathop{}\!\mathrm{d}t = t^2\bigg|_0^x = x^2
+\]</span>
+This is <code>antiD</code> found from the calculations above.</p>
+<p>So,
+<span class="math display">\[
+F_X(x)=\left\{ \begin{array}{ll} 0, &amp; x&lt;0 \\ x^2, &amp; 0\leq x \leq 1 \\ 1, &amp; x&gt;1 \end{array}\right.
+\]</span></p>
+<p>The plot of the cdf of <span class="math inline">\(X\)</span> is shown in Figure <a href="5-CONRANDVAR.html#fig:plot112-fig">5.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot112-fig"></span>
+<img src="ModernDive_files/figure-html/plot112-fig-1.png" alt="cdf of $X$" width="\textwidth" />
+<p class="caption">
+FIGURE 5.2: cdf of <span class="math inline">\(X\)</span>
+</p>
+</div>
+<p>Probabilities are found either by integrating the pdf or using the cdf:</p>
+<p><span class="math inline">\(\mbox{P}(X &lt; 0.5)=\mbox{P}(X\leq 0.5)=F_X(0.5)=0.5^2=0.25\)</span>. See Figure <a href="5-CONRANDVAR.html#fig:plot113-fig">5.3</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot113-fig"></span>
+<img src="ModernDive_files/figure-html/plot113-fig-1.png" alt="Probability represented by shaded area" width="\textwidth" />
+<p class="caption">
+FIGURE 5.3: Probability represented by shaded area
+</p>
+</div>
+<p><span class="math inline">\(\mbox{P}(X &gt; 0.5) = 1-\mbox{P}(X\leq 0.5)=1-0.25 = 0.75\)</span> See Figure <a href="5-CONRANDVAR.html#fig:plot114-fig">5.4</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot114-fig"></span>
+<img src="ModernDive_files/figure-html/plot114-fig-1.png" alt="Probability represented by shaded area" width="\textwidth" />
+<p class="caption">
+FIGURE 5.4: Probability represented by shaded area
+</p>
+</div>
+<p><span class="math inline">\(\mbox{P}(0.1\leq X &lt; 0.75) = \int_{0.1}^{0.75}2x\mathop{}\!\mathrm{d}x = 0.75^2 - 0.1^2 = 0.5525\)</span> See Figure <a href="5-CONRANDVAR.html#fig:plot115-fig">5.5</a>.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="5-CONRANDVAR.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)<span class="dv">2</span><span class="sc">*</span>x, <span class="fl">0.1</span>, <span class="fl">0.75</span>)</span></code></pre></div>
+<pre><code>0.5525 with absolute error &lt; 6.1e-15</code></pre>
+<p>Alternatively, <span class="math inline">\(\mbox{P}(0.1\leq X &lt; 0.75) = \mbox{P}(X &lt; 0.75) -\mbox{P}(x \leq 0.1) = F(0.75)-F(0.1)=0.75^2-0.1^2 =0.5525\)</span></p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="5-CONRANDVAR.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Fx</span>(<span class="fl">0.75</span>) <span class="sc">-</span> <span class="fu">Fx</span>(<span class="fl">0.1</span>)</span></code></pre></div>
+<pre><code>[1] 0.5525</code></pre>
+<p>Notice for a continuous random variable, we are loose with the use of the <code>=</code> sign. This is because for a continuous random variable <span class="math inline">\(\mbox{P}(X=x)=0\)</span>. Do not get sloppy when working with discrete random variables.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot115-fig"></span>
+<img src="ModernDive_files/figure-html/plot115-fig-1.png" alt="Probability represented by shaded area" width="\textwidth" />
+<p class="caption">
+FIGURE 5.5: Probability represented by shaded area
+</p>
+</div>
+<p>The median of <span class="math inline">\(X\)</span> is the value <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mbox{P}(X\leq x)=0.5\)</span>, the area under a single point is 0. So we simply solve <span class="math inline">\(x^2=0.5\)</span> for <span class="math inline">\(x\)</span>. Thus, the median of <span class="math inline">\(X\)</span> is <span class="math inline">\(\sqrt{0.5}=0.707\)</span>.</p>
+<p>Or using <code>R</code></p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="5-CONRANDVAR.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">uniroot</span>(<span class="cf">function</span>(x)(<span class="fu">Fx</span>(x) <span class="sc">-</span> <span class="fl">0.5</span>), <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))<span class="sc">$</span>root</span></code></pre></div>
+<pre><code>[1] 0.7071067</code></pre>
+</div>
+<div id="simulation-1" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Simulation<a href="5-CONRANDVAR.html#simulation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As in the case of the discrete random variable, we can simulate a continuous random variable if we have an inverse for the cdf. The range of the cdf is <span class="math inline">\([0,1]\)</span>, so we generate a random number in this interval and then apply the inverse cdf to obtain a random variable. In a similar manner, for a continuous random variable, we use the following pseudo code:<br />
+1. Generate a random number in the interval <span class="math inline">\([0,1]\)</span>, <span class="math inline">\(U\)</span>.<br />
+2. Find the random variable <span class="math inline">\(X\)</span> from <span class="math inline">\(F_{X}^{-1}(U)\)</span>.<br />
+In <code>R</code> for our example, this looks like the following.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="5-CONRANDVAR.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">runif</span>(<span class="dv">1</span>))</span></code></pre></div>
+<pre><code>[1] 0.6137365</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="5-CONRANDVAR.html#cb158-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">runif</span>(<span class="dv">1</span>))</span></code></pre></div>
+<div style="page-break-after: always;"></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="5-CONRANDVAR.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(results)</span></code></pre></div>
+<pre><code>
+quantitative variables:  
+  name   class         min        Q1    median        Q3       max      mean
+1 sqrt numeric 0.005321359 0.4977011 0.7084257 0.8656665 0.9999873 0.6669452
+         sd     n missing
+1 0.2358056 10000       0</code></pre>
+<div style="page-break-after: always;"></div>
+<p>Figure <a href="5-CONRANDVAR.html#fig:plot116-fig">5.6</a> is a density plot of the simulated density function.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="5-CONRANDVAR.html#cb161-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb161-2"><a href="5-CONRANDVAR.html#cb161-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_density</span>(<span class="sc">~</span>sqrt, <span class="at">xlab =</span> <span class="st">&quot;X&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb161-3"><a href="5-CONRANDVAR.html#cb161-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb161-4"><a href="5-CONRANDVAR.html#cb161-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">&quot;X&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot116-fig"></span>
+<img src="ModernDive_files/figure-html/plot116-fig-1.png" alt="Density plot of the simulated random variable." width="\textwidth" />
+<p class="caption">
+FIGURE 5.6: Density plot of the simulated random variable.
+</p>
+</div>
+</div>
+</div>
+<div id="moments-1" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Moments<a href="5-CONRANDVAR.html#moments-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As with discrete random variables, moments can be calculated to summarize characteristics such as center and spread. In the discrete case, expectation is found by multiplying each possible value by its associated probability and summing across the domain (<span class="math inline">\(\mbox{E}(X)=\sum_x x\cdot f_X(x)\)</span>). In the continuous case, the domain of <span class="math inline">\(X\)</span> consists of an infinite set of values. From your calculus days, recall that the sum across an infinite domain is represented by an integral.</p>
+<p>Let <span class="math inline">\(g(X)\)</span> be any function of <span class="math inline">\(X\)</span>. The expectation of <span class="math inline">\(g(X)\)</span> is found by:
+<span class="math display">\[
+\mbox{E}(g(X)) = \int_{S_X} g(x)f_X(x)\mathop{}\!\mathrm{d}x
+\]</span></p>
+<div id="mean-and-variance" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Mean and variance<a href="5-CONRANDVAR.html#mean-and-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let <span class="math inline">\(X\)</span> be a continuous random variable. The mean of <span class="math inline">\(X\)</span>, or <span class="math inline">\(\mu_X\)</span>, is simply <span class="math inline">\(\mbox{E}(X)\)</span>. Thus,
+<span class="math display">\[
+\mbox{E}(X)=\int_{S_X}x\cdot f_X(x)\mathop{}\!\mathrm{d}x
+\]</span></p>
+<p>As in the discrete case, the variance of <span class="math inline">\(X\)</span> is the expected squared difference from the mean, or <span class="math inline">\(\mbox{E}[(X-\mu_X)^2]\)</span>. Thus,
+<span class="math display">\[
+\sigma^2_X = \mbox{Var}(X)=\mbox{E}[(X-\mu_X)^2]= \int_{S_X} (x-\mu_X)^2\cdot f_X(x) \mathop{}\!\mathrm{d}x
+\]</span></p>
+<p>Recall homework problem 6 from the last chapter. In this problem, you showed that <span class="math inline">\(\mbox{Var}(X)=\mbox{E}(X^2)-\mbox{E}(X)^2\)</span>. Thus,
+<span class="math display">\[
+\mbox{Var}(X)=\mbox{E}(X^2)-\mbox{E}(X)^2 = \int_{S_X} x^2\cdot f_X(x)\mathop{}\!\mathrm{d}x - \mu_X^2
+\]</span></p>
+<blockquote>
+<p><em>Example</em>:<br />
+Consider the random variable <span class="math inline">\(X\)</span> from above. Find the mean and variance of <span class="math inline">\(X\)</span>.
+<span class="math display">\[
+\mu_X= \mbox{E}(X)=\int_0^1 x\cdot 2x\mathop{}\!\mathrm{d}x = \frac{2x^3}{3}\bigg|_0^1 = \frac{2}{3}=0.667
+\]</span></p>
+</blockquote>
+<p>Side note: Since the mean of <span class="math inline">\(X\)</span> is smaller than the median of <span class="math inline">\(X\)</span>, we say that <span class="math inline">\(X\)</span> is skewed to the left, or negatively skewed.</p>
+<p>Using <code>R</code>.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="5-CONRANDVAR.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)x<span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>x, <span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>0.6666667 with absolute error &lt; 7.4e-15</code></pre>
+<p>Or using <code>antiD()</code></p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="5-CONRANDVAR.html#cb164-1" aria-hidden="true" tabindex="-1"></a>Ex <span class="ot">&lt;-</span> <span class="fu">antiD</span>(<span class="dv">2</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">~</span> x)</span>
+<span id="cb164-2"><a href="5-CONRANDVAR.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Ex</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">Ex</span>(<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>[1] 0.6666667</code></pre>
+<p>Using our simulation.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="5-CONRANDVAR.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span>sqrt, <span class="at">data =</span> results)</span></code></pre></div>
+<pre><code>[1] 0.6669452</code></pre>
+<p><span class="math display">\[
+\sigma^2_X = \mbox{Var}(X)= \mbox{E}(X^2)-\mbox{E}(X)^2 = \int_0^1 x^2\cdot 2x\mathop{}\!\mathrm{d}x - \left(\frac{2}{3}\right)^2 = \frac{2x^4}{4}\bigg|_0^1-\frac{4}{9}=\frac{1}{2}-\frac{4}{9}=\frac{1}{18}=0.056
+\]</span></p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="5-CONRANDVAR.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)x<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>x, <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">$</span>value <span class="sc">-</span> (<span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>[1] 0.05555556</code></pre>
+<p>or</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="5-CONRANDVAR.html#cb170-1" aria-hidden="true" tabindex="-1"></a>Vx <span class="ot">&lt;-</span> <span class="fu">antiD</span>(x<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>x <span class="sc">~</span> x)</span>
+<span id="cb170-2"><a href="5-CONRANDVAR.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Vx</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">Vx</span>(<span class="dv">0</span>) <span class="sc">-</span> (<span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>[1] 0.05555556</code></pre>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="5-CONRANDVAR.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(<span class="sc">~</span>sqrt, <span class="at">data =</span> results)<span class="sc">*</span><span class="dv">9999</span><span class="sc">/</span><span class="dv">10000</span></span></code></pre></div>
+<pre><code>[1] 0.05559873</code></pre>
+<p>And finally, the standard deviation of <span class="math inline">\(X\)</span> is <span class="math inline">\(\sigma_X = \sqrt{\sigma^2_X}=\sqrt{1/18}=0.236\)</span>.</p>
+</div>
+</div>
+<div id="homework-problems-4" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Homework Problems<a href="5-CONRANDVAR.html#homework-problems-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Let <span class="math inline">\(X\)</span> be a continuous random variable on the domain <span class="math inline">\(-k \leq X \leq k\)</span>. Also, let <span class="math inline">\(f(x)=\frac{x^2}{18}\)</span>.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Assume that <span class="math inline">\(f(x)\)</span> is a valid pdf. Find the value of <span class="math inline">\(k\)</span>.<br />
+</li>
+<li>Plot the pdf of <span class="math inline">\(X\)</span>.<br />
+</li>
+<li>Find and plot the cdf of <span class="math inline">\(X\)</span>.<br />
+</li>
+<li>Find <span class="math inline">\(\mbox{P}(X&lt;1)\)</span>.<br />
+</li>
+<li>Find <span class="math inline">\(\mbox{P}(1.5&lt;X\leq 2.5)\)</span>.<br />
+</li>
+<li>Find the 80th percentile of <span class="math inline">\(X\)</span> (the value <span class="math inline">\(x\)</span> for which 80% of the distribution is to the left of that value).<br />
+</li>
+<li>Find the value <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mbox{P}(-x \leq X \leq x)=0.4\)</span>.<br />
+</li>
+<li>Find the mean and variance of <span class="math inline">\(X\)</span>.<br />
+</li>
+<li>Simulate 10000 values from this distribution and plot the density.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Let <span class="math inline">\(X\)</span> be a continuous random variable. Prove that the cdf of <span class="math inline">\(X\)</span>, <span class="math inline">\(F_X(x)\)</span> is a non-decreasing function. (Hint: show that for any <span class="math inline">\(a &lt; b\)</span>, <span class="math inline">\(F_X(a) \leq F_X(b)\)</span>.)</li>
+</ol>
+</div>
+<div id="solutions-manual-4" class="section level2 unnumbered hasAnchor">
+<h2><a href="https://ds-usafa.github.io/PSSE-Solutions-Manual/CONRANDVAR.html">Solutions Manual</a><a href="5-CONRANDVAR.html#solutions-manual-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="foreword.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4-RANDVAR.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-DISCRETENAMED.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -740,7 +932,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/moderndive/moderndive_book/edit/master/index.Rmd",
+"link": "https://github.com/moderndive/moderndive_book/edit/master/PSSE_additions/11-Continuous-Random-Variables.Rmd",
 "text": "Edit"
 },
 "history": {

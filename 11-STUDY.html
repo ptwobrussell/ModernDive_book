@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Statistical Inference via Data Science</title>
+  <title>Chapter 11 Studies | Statistical Inference via Data Science</title>
   <meta name="description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Statistical Inference via Data Science" />
+  <meta property="og:title" content="Chapter 11 Studies | Statistical Inference via Data Science" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://moderndive.com//images/logos/book_cover.png" />
   <meta property="og:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="github-repo" content="moderndive/ModernDive_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Statistical Inference via Data Science" />
+  <meta name="twitter:title" content="Chapter 11 Studies | Statistical Inference via Data Science" />
   <meta name="twitter:site" content="@ModernDive" />
   <meta name="twitter:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="twitter:image" content="https://moderndive.com//images/logos/book_cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/logos/favicons/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/logos/favicons/favicon.ico" type="image/x-icon" />
-
-<link rel="next" href="foreword.html"/>
+<link rel="prev" href="10-ODCP.html"/>
+<link rel="next" href="12-viz.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -669,47 +669,211 @@ div.csl-indent {
 <html>
 <img src='https://moderndive.com/wide_format.png' alt="ModernDive">
 </html>
-<div id="header">
-<h1 class="title">Statistical Inference via Data Science</h1>
-<h2 class="subtitle"><em>A ModernDive into R and the Tidyverse</em></h2>
-<p class="author"><em>Chester Ismay and Albert Y. Kim <br> Foreword by Kelly S. McConville</em></p>
-<p class="date"><em>December 05, 2023</em></p>
+<div id="STUDY" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Studies<a href="11-STUDY.html#STUDY" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="observation-studies-sampling-strategies-and-experiments" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Observation studies, sampling strategies, and experiments<a href="11-STUDY.html#observation-studies-sampling-strategies-and-experiments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We have introduced data and some language around data collection (<em>population</em> and <em>sample</em>, <em>bias</em>, <em>representative</em>, <em>explanatory</em> and <em>response</em> variables, and <em>observational studies</em> and <em>experiments</em>). In this chapter, we focus on the actual collection of the data. What kinds of sampling can/should we conduct? What is the difference between an observational study and an experiment, and how do we effectively set up an experiment? An understanding of these concepts is important prior to exploring and visualizing data.</p>
+<div id="observational-studies" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Observational studies<a href="11-STUDY.html#observational-studies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Generally, data in observational studies are collected only by monitoring what occurs, while experiments require the primary explanatory variable in a study be assigned for each subject by the researchers.</p>
+<p>Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Thus, observational studies are generally only sufficient to show associations.</p>
+<blockquote>
+<p><strong>Exercise</strong>:<br />
+Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen <em>causes</em> skin cancer?<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a></p>
+</blockquote>
+<p>Some previous research<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a> tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. One important piece of information that is absent is sun exposure. If someone is out in the sun all day, she is more likely to use sunscreen <em>and</em> more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:confound-fig"></span>
+<img src="ModernDive_files/figure-html/confound-fig-1.png" alt="Sun exposure is a confounding variable because it is related to both response and explanatory variables." width="\textwidth" />
+<p class="caption">
+FIGURE 11.1: Sun exposure is a confounding variable because it is related to both response and explanatory variables.
+</p>
 </div>
-<div id="welcome-to-moderndive" class="section level1 unnumbered hasAnchor">
-<h1>Welcome to ModernDive<a href="index.html#welcome-to-moderndive" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<!-- purl() all the chapter Rmd's in a new session -->
-<!--
-<div class="announcement">
-<p><strong>This is a previous version (v<code>r version</code>) of
-<em>ModernDive</em> and may be out of date. For the current version of
-<em>ModernDive</em>, please go to <a
-href="https://moderndive.com/">ModernDive.com</a>.</strong></p>
+<p>Sun exposure is what is called a <strong>confounding variable</strong>,<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a> which is a variable that is correlated with both the explanatory and response variables, see Figure <a href="11-STUDY.html#fig:confound-fig">11.1</a> . While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables, there is no guarantee that all confounding variables can be examined or measured.</p>
+<p>Let’s look at an example of confounding visually. Using the <code>SAT</code> data from the <strong>mosaic</strong> package let’s look at expenditure per pupil versus SAT scores. Figure <a href="11-STUDY.html#fig:confound2-fig">11.2</a> is a plot of the data.</p>
+<blockquote>
+<p><strong>Exercise</strong>:<br />
+What conclusion do you reach from the plot in Figure <a href="11-STUDY.html#fig:confound2-fig">11.2</a>?<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a></p>
+</blockquote>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:confound2-fig"></span>
+<img src="ModernDive_files/figure-html/confound2-fig-1.png" alt="Average SAT score versus expenditure per pupil; reminder: each observation represents an individual state." width="\textwidth" />
+<p class="caption">
+FIGURE 11.2: Average SAT score versus expenditure per pupil; reminder: each observation represents an individual state.
+</p>
 </div>
--->
-<!--
-<div class="learncheck">
-<p><strong>Please note that you are currently looking at a preview of a
-future version of <em>ModernDive</em>, which is currently being edited.
-For the current version of <em>ModernDive</em>, please visit <a
-href="https://moderndive.com/">ModernDive.com</a>.</strong></p>
+<p>The implication that spending less might give better results is not justified. Expenditures are confounded with the proportion of students who take the exam, and scores are higher in states where fewer students take the exam.</p>
+<p>It is interesting to look at the original plot if we place the states into two groups depending on whether more or
+fewer than 40% of students take the SAT. Figure <a href="11-STUDY.html#fig:conditional-fig">11.3</a> is a plot of the data broken down into the 2 groups.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:conditional-fig"></span>
+<img src="ModernDive_files/figure-html/conditional-fig-1.png" alt="Average SAT score versus expenditure per pupil; broken down by level of participation." width="\textwidth" />
+<p class="caption">
+FIGURE 11.3: Average SAT score versus expenditure per pupil; broken down by level of participation.
+</p>
 </div>
--->
-<!-- include=FALSE for PDF sending to CRC -->
-<p>This is the <a href="https://moderndive.com/">website</a> for <em>Statistical Inference via Data Science: A ModernDive into R and the Tidyverse</em>! Visit the <a href="https://github.com/moderndive/ModernDive_book">GitHub repository for this site</a> and find the book on <a href="https://www.amazon.com/Statistical-Inference-via-Data-Science/dp/0367409828/">Amazon</a>. You can also purchase it at <a href="https://www.routledge.com/Statistical-Inference-via-Data-Science-A-ModernDive-into-R-and-the-Tidyverse/Ismay-Kim/p/book/9780367409821?utm_source=author&amp;utm_medium=shared_link&amp;utm_campaign=B043134_jm1_5ll_6rm_t081_1al_statisticalinferenceviadatascienceauthorshare">CRC Press</a>.</p>
-<p></br>
-<img src="images/logos/book_cover.png" width="350" />
-</br></p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://chester.rbind.io/">Chester Ismay</a> and <a href="https://rudeboybert.rbind.io/">Albert Y. Kim</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-<!-- index.Rmd has to have some content in it or it won't create an index.html 
-file. Make sure to keep this in so that index.html is included. -->
+<p>Once we account for the fraction of students taking the SAT, the relationship between expenditures and SAT scores changes.</p>
+<p>In the same way, the <code>county</code> data set is an observational study with confounding variables, and its data cannot easily be used to make causal conclusions.</p>
+<blockquote>
+<p><strong>Exercise</strong>:<br />
+Figure <a href="11-STUDY.html#fig:homeown2-fig">11.4</a> shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county. However, it is unreasonable to conclude that there is a causal relationship between the two variables. Suggest one or more other variables that might explain the relationship in the Figure <a href="11-STUDY.html#fig:homeown2-fig">11.4</a>.<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a></p>
+</blockquote>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:homeown2-fig"></span>
+<img src="ModernDive_files/figure-html/homeown2-fig-1.png" alt="A scatterplot of the homeownership rate versus the percent of units that are in multi-unit structures for all 3,143 counties." width="\textwidth" />
+<p class="caption">
+FIGURE 11.4: A scatterplot of the homeownership rate versus the percent of units that are in multi-unit structures for all 3,143 counties.
+</p>
+</div>
+<p>Observational studies come in two forms: prospective and retrospective studies. A <strong>prospective study</strong> identifies individuals and collects information as events unfold. For instance, medical researchers may identify and follow a group of similar individuals over many years to assess the possible influences of behavior on cancer risk. One example of such a study is The Nurses Health Study, started in 1976 and expanded in 1989.<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a> This prospective study recruits registered nurses and then collects data from them using questionnaires.</p>
+<p><strong>Retrospective studies</strong> collect data after events have taken place; e.g. researchers may review past events in medical records. Some data sets, such as <code>county</code>, may contain both prospectively- and retrospectively-collected variables. Local governments prospectively collect some variables as events unfolded (e.g. retail sales) while the federal government retrospectively collected others during the 2010 census (e.g. county population).</p>
+</div>
+<div id="three-sampling-methods" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> Three sampling methods<a href="11-STUDY.html#three-sampling-methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Almost all statistical methods are based on the notion of implied randomness. If observational data are not collected in a random framework from a population, results from these statistical methods are not reliable. Here we consider three random sampling techniques: simple, stratified, and cluster sampling. Figures <a href="11-STUDY.html#fig:simprand-fig">11.5</a> , <a href="11-STUDY.html#fig:stratsamp2-fig">11.6</a> , and <a href="11-STUDY.html#fig:clussamp4-fig">11.7</a> provides a graphical representation of these techniques.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:simprand-fig"></span>
+<img src="ModernDive_files/figure-html/simprand-fig-1.png" alt="Examples of simple random sampling. In this figure, simple random sampling was used to randomly select the 18 cases." width="\textwidth" />
+<p class="caption">
+FIGURE 11.5: Examples of simple random sampling. In this figure, simple random sampling was used to randomly select the 18 cases.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:stratsamp2-fig"></span>
+<img src="ModernDive_files/figure-html/stratsamp2-fig-1.png" alt="In this figure, stratified sampling was used: cases were grouped into strata, and then simple random sampling was employed within each stratum." width="\textwidth" />
+<p class="caption">
+FIGURE 11.6: In this figure, stratified sampling was used: cases were grouped into strata, and then simple random sampling was employed within each stratum.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:clussamp4-fig"></span>
+<img src="ModernDive_files/figure-html/clussamp4-fig-1.png" alt="In this figure, cluster sampling was used, where data were binned into nine clusters, and three of the clusters were randomly selected." width="\textwidth" />
+<p class="caption">
+FIGURE 11.7: In this figure, cluster sampling was used, where data were binned into nine clusters, and three of the clusters were randomly selected.
+</p>
+</div>
+<p><strong>Simple random sampling</strong> is probably the most intuitive form of random sampling, in which each individual in the population has an equal chance of being chosen. Consider the salaries of Major League Baseball (MLB) players, where each player is a member of one of the league’s 30 teams. To take a simple random sample of 120 baseball players and their salaries from the 2010 season, we could write the names of that season’s 828 players onto slips of paper, drop the slips into a bucket, shake the bucket around until we are sure the names are all mixed up, then draw out slips until we have the sample of 120 players. In general, a sample is referred to as “simple random” if each case in the population has an equal chance of being included in the final sample <em>and</em> knowing that a case is included in a sample does not provide useful information about which other cases are included or not.</p>
+<p><strong>Stratified sampling</strong> is a divide-and-conquer sampling strategy. The population is divided into groups called <strong>strata</strong>. The strata are chosen so that similar cases are grouped together, then a second sampling method, usually simple random sampling, is employed within each stratum. In the baseball salary example, the teams could represent the strata; some teams have a lot more money (we’re looking at you, Yankees). Then we might randomly sample 4 players from each team for a total of 120 players.</p>
+<p>Stratified sampling is especially useful when the cases in each stratum are very similar with respect to the outcome of interest. The downside is that analyzing data from a stratified sample is a more complex task than analyzing data from a simple random sample. The analysis methods introduced in this book would need to be extended to analyze data collected using stratified sampling.</p>
+<blockquote>
+<p><strong>Example</strong>:<br />
+Why would it be good for cases within each stratum to be very similar?<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a></p>
+</blockquote>
+<p>In <strong>cluster sampling</strong>, we group observations into clusters, then randomly sample some of the clusters. Sometimes cluster sampling can be a more economical technique than the alternatives. Also, unlike stratified sampling, cluster sampling is most helpful when there is a lot of case-to-case variability within a cluster but the clusters themselves don’t look very different from one another. For example, if neighborhoods represented clusters, then this sampling method works best when the neighborhoods are very diverse. A downside of cluster sampling is that more advanced analysis techniques are typically required, though the methods in this book can be extended to handle such data.</p>
+<blockquote>
+<p><strong>Example</strong>:<br />
+Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia. We learn that there are 30 villages in that part of the Indonesian jungle, each more or less similar to the next. What sampling method should be employed?<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a></p>
+</blockquote>
+<p>Another technique called <strong>multistage sampling</strong> is similar to cluster sampling, except that we take a simple random sample within each selected cluster. For instance, if we sampled neighborhoods using cluster sampling, we would next sample a subset of homes within each selected neighborhood if we were using multistage sampling.</p>
+</div>
+<div id="experiments" class="section level3 hasAnchor" number="11.1.3">
+<h3><span class="header-section-number">11.1.3</span> Experiments<a href="11-STUDY.html#experiments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Studies where the researchers assign treatments to cases are called <strong>experiments</strong>. When this assignment includes randomization, e.g. using a coin flip to decide which treatment a patient receives, it is called a <strong>randomized experiment</strong>. Randomized experiments are fundamentally important when trying to show a causal connection between two variables.</p>
+<div id="principles-of-experimental-design" class="section level4 hasAnchor" number="11.1.3.1">
+<h4><span class="header-section-number">11.1.3.1</span> Principles of experimental design<a href="11-STUDY.html#principles-of-experimental-design" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Randomized experiments are generally built on four principles.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Controlling</strong>. Researchers assign treatments to cases, and they do their best to <strong>control</strong> any other differences in the groups. For example, when patients take a drug in pill form, some patients take the pill with only a sip of water while others may have it with an entire glass of water. To control for the effect of water consumption, a doctor may ask all patients to drink a 12 ounce glass of water with the pill.</p></li>
+<li><p><strong>Randomization</strong>. Researchers randomize patients into treatment groups to account for variables that cannot be controlled. For example, some patients may be more susceptible to a disease than others due to their dietary habits. Randomizing patients into the treatment or control group helps even out such differences, and it also prevents accidental bias from entering the study.</p></li>
+<li><p><strong>Replication</strong>. The more cases researchers observe, the more accurately they can estimate the effect of the explanatory variable on the response. In a single study, we <strong>replicate</strong> by collecting a sufficiently large sample. Additionally, a group of scientists may replicate an entire study to verify an earlier finding. You replicate to the level of variability you want to estimate. For example, in flight test, we can run the same flight conditions again to get a replicate; however, if the same plane and pilot are being used, the replicate is not getting the pilot-to-pilot or the plane-to-plane variability.</p></li>
+<li><p><strong>Blocking</strong>. Researchers sometimes know or suspect that variables, other than the treatment, influence the response. Under these circumstances, they may first group individuals based on this variable and then randomize cases within each block, or group, to the treatments. This strategy is often referred to as <strong>blocking</strong>. For instance, if we are looking at the effect of a drug on heart attacks, we might first split patients into low-risk and high-risk blocks, then randomly assign half the patients from each block to the control group and the other half to the treatment group, as shown in Figure <a href="11-STUDY.html#fig:exp4-fig">11.8</a>. This strategy ensures each treatment group has an equal number of low-risk and high-risk patients.</p></li>
+</ol>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exp4-fig"></span>
+<img src="ModernDive_files/figure-html/exp4-fig-1.png" alt="Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly divided into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories." width="\textwidth" />
+<p class="caption">
+FIGURE 11.8: Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly divided into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories.
+</p>
+</div>
+<p>It is important to incorporate the first three experimental design principles into any study, and this chapter describes methods for analyzing data from such experiments. Blocking is a slightly more advanced technique, and statistical methods in this chapter may be extended to analyze data collected using blocking. Math 359 is an entire course at USAFA devoted to the design and analysis of experiments.</p>
+</div>
+<div id="reducing-bias-in-human-experiments" class="section level4 hasAnchor" number="11.1.3.2">
+<h4><span class="header-section-number">11.1.3.2</span> Reducing bias in human experiments<a href="11-STUDY.html#reducing-bias-in-human-experiments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Randomized experiments are the gold standard for data collection, but they do not ensure an unbiased perspective into the cause and effect relationships in all cases. Human studies are perfect examples where bias can unintentionally arise. Here we reconsider a study where a new drug was used to treat heart attack patients.<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a> In particular, researchers wanted to know if the drug reduced deaths in patients.</p>
+<p>These researchers designed a randomized experiment because they wanted to draw causal conclusions about the drug’s effect. Study volunteers<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a> were randomly placed into two study groups. One group, the <strong>treatment group</strong>, received the experimental treatment of interest (the new drug to treat heart attack patients). The other group, called the <strong>control group</strong>, did not receive any drug treatment. The comparison between the treatment and control groups allows researchers to determine whether the treatment really has an effect.</p>
+<p>Put yourself in the place of a person in the study. If you are in the treatment group, you are given a fancy new drug that you anticipate will help you. On the other hand, a person in the other group doesn’t receive the drug and sits idly, hoping her participation doesn’t increase her risk of death. These perspectives suggest there are actually two effects: the one of interest is the effectiveness of the drug, and the second is an emotional effect that is difficult to quantify.</p>
+<p>Researchers aren’t usually interested in the emotional effect, which might bias the study. To circumvent this problem, researchers do not want patients to know which group they are in. When researchers keep the patients uninformed about their treatment, the study is said to be <strong>blind</strong>. But there is one problem: if a patient doesn’t receive a treatment, she will know she is in the control group. The solution to this problem is to give fake treatments to patients in the control group. A fake treatment is called a <strong>placebo</strong>, and an effective placebo is the key to making a study truly blind. A classic example of a placebo is a sugar pill that is made to look like the actual treatment pill. Often times, a placebo results in a slight but real improvement in patients. This effect has been dubbed the <strong>placebo effect</strong>.</p>
+<p>The patients are not the only ones who should be blinded: doctors and researchers can accidentally bias a study. When a doctor knows a patient has been given the real treatment, she might inadvertently give that patient more attention or care than a patient that she knows is on the placebo. To guard against this bias, which again has been found to have a measurable effect in some instances, most modern studies employ a <strong>double-blind</strong> setup where doctors or researchers who interact with patients are, just like the patients, unaware of who is or is not receiving the treatment.<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a></p>
+<blockquote>
+<p><strong>Exercise</strong>:<br />
+Look back to the stent study in the first chapter where researchers were testing whether stents were effective at reducing strokes in at-risk patients. Is this an experiment? Was the study blinded? Was it double-blinded?<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a></p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="homework-problems-9" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Homework Problems<a href="11-STUDY.html#homework-problems-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><strong>Propose a sampling strategy</strong>. A large college class has 160 students. All 160 students attend the lectures together, but the students are divided into 4 groups, each with 40 students, for lab sections administered by different teaching assistants. The professor wants to conduct a survey about how satisfied the students are with the course, and he believes that the lab section a student is in might affect the student’s overall satisfaction with the course.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>What type of study is this?</p></li>
+<li><p>Suggest a sampling strategy for carrying out this study.</p></li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Flawed reasoning</strong>. Identify the flaw in reasoning in the following scenarios. Explain what the individuals in the study should have done differently if they want to be able to make such strong conclusions.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Students at an elementary school are given a questionnaire that they are required to return after their parents have completed it. One of the questions asked is, <em>Do you find that your work schedule makes it difficult for you to spend time with your kids after school?</em> Of the parents who replied, 85% said <em>no</em>. Based on these results, the school officials conclude that a great majority of the parents have no difficulty spending time with their kids after school.</p></li>
+<li><p>A survey is conducted on a simple random sample of 1,000 women who recently gave birth, asking them about whether or not they smoked during pregnancy. A follow-up survey asking if the children have respiratory problems is conducted 3 years later, however, only 567 of these women are reached at the same address. The researcher reports that these 567 women are representative of all mothers.</p></li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Sampling strategies</strong>. A statistics student who is curious about the relationship between the amount of time students spend on social networking sites and their performance at school decides to conduct a survey. Four research strategies for collecting data are described below. In each, name the sampling method proposed and any bias you might expect. <em>Note: Sampling methods from both Chapter 3 (Overview of Data Collection Principles) and Chapter 4 (Studies) may be used for this problem.</em></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>He randomly samples 40 students from the study’s population, gives them the survey, asks them to fill it out and bring it back the next day.</p></li>
+<li><p>He gives out the survey only to his friends, and makes sure each one of them fills out the survey.</p></li>
+<li><p>He posts a link to an online survey on his Facebook wall and asks his friends to fill out the survey.</p></li>
+<li><p>He stands outside the QRC and asks every third person that walks out the door to fill out the survey.</p></li>
+</ol>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Vitamin supplements</strong>. In order to assess the effectiveness of taking large doses of vitamin C in reducing the duration of the common cold, researchers recruited 400 healthy volunteers from staff and students at a university. A quarter of the patients were assigned a placebo, and the rest were evenly divided between 1g Vitamin C, 3g Vitamin C, or 3g Vitamin C plus additives to be taken at the onset of a cold for the following two days. All tablets had identical appearance and packaging. The nurses who handed the prescribed pills to the patients knew which patient received which treatment, but the researchers assessing the patients when they were sick did not. No significant differences were observed in any measure of cold duration or severity between the four medication groups, and the placebo group had the shortest duration of symptoms.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Is this an experiment or an observational study? Why?</p></li>
+<li><p>What are the explanatory and response variables in this study?</p></li>
+<li><p>Were the patients blinded to their treatment?</p></li>
+<li><p>Was this study double-blind?</p></li>
+<li><p>Participants are ultimately able to choose whether or not to use the pills prescribed to them. We might expect that not all of them will adhere and take their pills. Does this introduce a confounding variable to the study? Explain your reasoning.</p></li>
+</ol>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>Exercise and mental health</strong>. A researcher is interested in the effects of exercise on mental health and she proposes the following study: Use stratified random sampling to ensure representative proportions of 18-30, 31-40 and 41-55 year olds from the population. Next, randomly assign half the subjects from each age group to exercise twice a week, and instruct the rest not to exercise. Conduct a mental health exam at the beginning and at the end of the study, and compare the results.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>What type of study is this?</p></li>
+<li><p>What are the treatment and control groups in this study?</p></li>
+<li><p>Does this study make use of blocking? If so, what is the blocking variable?</p></li>
+<li><p>Does this study make use of blinding?</p></li>
+<li><p>Comment on whether or not the results of the study can be used to establish a causal relationship between exercise and mental health, and indicate whether or not the conclusions can be generalized to the population at large.</p></li>
+<li><p>Suppose you are given the task of determining if this proposed study should get funding. Would you have any reservations about the study proposal?</p></li>
+</ol>
+</div>
+<div id="solutions-manual-10" class="section level2 unnumbered hasAnchor">
+<h2><a href="https://ds-usafa.github.io/PSSE-Solutions-Manual/STUDY.html">Solutions Manual</a><a href="11-STUDY.html#solutions-manual-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="19">
+<li id="fn19"><p>No. See the paragraph following the exercise for an explanation.<a href="11-STUDY.html#fnref19" class="footnote-back">↩︎</a></p></li>
+<li id="fn20"><p><a href="http://www.sciencedirect.com/science/article/pii/S0140673698121682" class="uri">http://www.sciencedirect.com/science/article/pii/S0140673698121682</a><br />
+<a href="http://archderm.ama-assn.org/cgi/content/abstract/122/5/537" class="uri">http://archderm.ama-assn.org/cgi/content/abstract/122/5/537</a><br />
+Study with a similar scenario to that described here:<br />
+<a href="http://onlinelibrary.wiley.com/doi/10.1002/ijc.22745/full" class="uri">http://onlinelibrary.wiley.com/doi/10.1002/ijc.22745/full</a><a href="11-STUDY.html#fnref20" class="footnote-back">↩︎</a></p></li>
+<li id="fn21"><p>Also called a <strong>lurking variable</strong>, <strong>confounding factor</strong>, or a <strong>confounder</strong>.<a href="11-STUDY.html#fnref21" class="footnote-back">↩︎</a></p></li>
+<li id="fn22"><p>It appears that average SAT score declines as expenditures per student increases.<a href="11-STUDY.html#fnref22" class="footnote-back">↩︎</a></p></li>
+<li id="fn23"><p>Answers will vary. Population density may be important. If a county is very dense, then a larger fraction of residents may live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.<a href="11-STUDY.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p><a href="http://www.channing.harvard.edu/nhs/" class="uri">http://www.channing.harvard.edu/nhs/</a><a href="11-STUDY.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p>We might get a more stable estimate for the subpopulation in a stratum if the cases are very similar. These improved estimates for each subpopulation will help us build a reliable estimate for the full population.<a href="11-STUDY.html#fnref25" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p>A simple random sample would likely draw individuals from all 30 villages, which could make data collection extremely expensive. Stratified sampling would be a challenge since it is unclear how we would build strata of similar individuals. However, cluster sampling seems like a very good idea. We might randomly select a small number of villages. This would probably reduce our data collection costs substantially in comparison to a simple random sample and would still give us helpful information.<a href="11-STUDY.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn27"><p>Anturane Reinfarction Trial Research Group. 1980. Sulfinpyrazone in the prevention of sudden death after myocardial infarction. New England Journal of Medicine 302(5):250-256.<a href="11-STUDY.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn28"><p>Human subjects are often called <strong>patients</strong>, <strong>volunteers</strong>, or <strong>study participants</strong>.<a href="11-STUDY.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p>There are always some researchers in the study who do know which patients are receiving which treatment. However, they do not interact with the study’s patients and do not tell the blinded health care professionals who is receiving which treatment.<a href="11-STUDY.html#fnref29" class="footnote-back">↩︎</a></p></li>
+<li id="fn30"><p>The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.<a href="11-STUDY.html#fnref30" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="foreword.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="10-ODCP.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="12-viz.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -740,7 +904,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/moderndive/moderndive_book/edit/master/index.Rmd",
+"link": "https://github.com/moderndive/moderndive_book/edit/master/PSSE_additions/04-Studies.Rmd",
 "text": "Edit"
 },
 "history": {
