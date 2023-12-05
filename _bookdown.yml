@@ -21,8 +21,8 @@ rmd_files:
    "PSSE_additions/02-Data-Basics.Rmd",
    "PSSE_additions/03-Overview-of-Data-Collection-Principles.Rmd",
    "PSSE_additions/04-Studies.Rmd",
-   "02-Visualization.Rmd",
-   "03-Wrangling.Rmd",
+   "02-visualization.Rmd",
+   "03-wrangling.Rmd",
 
    # Block 3: Statistical Inference, Modern Dive Injections
    "07-sampling.Rmd",
@@ -54,8 +54,8 @@ rmd_files:
    "PSSE_additions/02-Data-Basics.Rmd",
    "PSSE_additions/03-Overview-of-Data-Collection-Principles.Rmd",
    "PSSE_additions/04-Studies.Rmd",
-   "02-Visualization.Rmd",
-   "03-Wrangling.Rmd",
+   "02-visualization.Rmd",
+   "03-wrangling.Rmd",
 
    # Block 3: Statistical Inference, Modern Dive Injections
    "07-sampling.Rmd",
