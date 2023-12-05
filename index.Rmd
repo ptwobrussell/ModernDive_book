@@ -23,9 +23,9 @@ cover-image: "images/logos/book_cover.png"
 url: 'https\://moderndive.com/'
 apple-touch-icon: "images/logos/favicons/apple-touch-icon.png"
 favicon: "images/logos/favicons/favicon.ico"
-output:
-  bookdown::pdf_book:
-    latex_engine: xelatex
+#output:
+#  bookdown::pdf_book:
+#    latex_engine: xelatex
 before_chapter_script: "library_load.R"
 ---
 
