@@ -153,7 +153,7 @@ if (is_html_output()) {
 
 <!-- purl() all the chapter Rmd's in a new session -->
 ```{bash, include=FALSE, purl=FALSE}
-/opt/homebrew/bin/Rscript -e "source('purl.R', local = TRUE)"
+Rscript -e "source('purl.R', local = TRUE)"
 ```
 
 
